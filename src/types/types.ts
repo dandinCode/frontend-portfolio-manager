@@ -5,3 +5,9 @@ export interface Stock {
   createdAt: Date;
   createdById: number;
 }
+
+export interface StockSymbol {
+  id: number
+  symbol: string
+  status: string
+}
