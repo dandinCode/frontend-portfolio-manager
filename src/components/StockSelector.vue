@@ -7,20 +7,19 @@
                 </v-btn>
             </v-col>
         </v-row>
-
         <v-expand-transition>
             <div v-show="!hidden">
-                <div class="d-flex justify-center my-10" v-if="store.loading">
+                <div class="d-flex justify-center my-10" v-if="stocks.loading">
                     <v-progress-circular indeterminate size="60" color="blue-lighten-2" />
                 </div>
                 <v-row v-else dense>
-                    <v-col v-for="stock in store.stocks" :key="stock.id" cols="6" sm="4" md="3" lg="2">
+                    <v-col v-for="stock in stocks.symbols" :key="stock.id" cols="6" sm="4" md="3" lg="2">
                         <v-hover v-slot="{ isHovering, props }">
                             <v-card v-bind="props"
                                 class="pa-4 d-flex align-center justify-center text-center selectable-card" :class="{
-                                    'selected-card': store.selected.includes(stock.symbol),
-                                    'hover-card': isHovering
-                                }" height="80" @click="store.toggle(stock.symbol)">
+                                    'hover-card': isHovering,
+                                    'selected-card': analysis.selectedSymbols.includes(stock.symbol)
+                                }" height="80" @click="analysis.toggleSymbol(stock.symbol)">
                                 <v-tooltip :text="'Status: ' + stock.status">
                                     <template #activator="{ props: tooltipProps }">
                                         <span v-bind="tooltipProps" class="text-white text-h6">
@@ -34,20 +33,21 @@
                 </v-row>
             </div>
         </v-expand-transition>
-
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useStocksStore } from "@/stores/stocksStore";
+import { useAnalysisStore } from "@/stores/analysisStore";
 
-const store = useStocksStore();
+const stocks = useStocksStore();
+const analysis = useAnalysisStore();
 const hidden = ref(false);
 
 onMounted(() => {
-    if (store.stocks.length === 0) {
-        store.loadStocks();
+    if (stocks.symbols.length === 0) {
+        stocks.loadStocks();
     }
 });
 </script>

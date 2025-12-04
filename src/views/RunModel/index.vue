@@ -14,13 +14,13 @@
                 Qualquer pessoa pode cadastrar symbols. Cabe a você decidir se quer rodar o modelo com eles.
                 Caso algum símbolo não exista, o modelo apenas **ignora** e segue com os outros.
             </v-alert>
-
+            <DateRangeSelector />
             <StockSelector />
-
             <v-divider class="my-6" />
 
-            <v-btn color="blue-accent-3" size="large" block :disabled="store.selected.length === 0" @click="runModel">
-                Rodar Modelo com {{ store.selected.length }} ações
+            <v-btn color="blue-accent-3" size="large" block :disabled="analysis.selectedSymbols.length === 0"
+                @click="runModel">
+                Rodar Modelo com {{ analysis.selectedSymbols.length }} ações
             </v-btn>
 
         </v-sheet>
@@ -29,11 +29,16 @@
 
 <script setup lang="ts">
 import StockSelector from "@/components/StockSelector.vue";
-import { useStocksStore } from "@/stores/stocksStore";
+import DateRangeSelector from "@/components/DateRangeSelector.vue";
+import { useAnalysisStore } from "@/stores/analysisStore";
 
-const store = useStocksStore();
+const analysis = useAnalysisStore();
 
 function runModel() {
-    console.log("Rodar modelo com:", store.selected);
+    console.log({
+        start: analysis.start,
+        end: analysis.end,
+        symbols: analysis.selectedSymbols
+    });
 }
 </script>
