@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <v-row>
             <v-col class="d-flex justify-end">
                 <v-btn variant="outlined" color="grey-lighten-2" @click="hidden = !hidden">
@@ -11,12 +10,9 @@
 
         <v-expand-transition>
             <div v-show="!hidden">
-
                 <div class="d-flex justify-center my-10" v-if="store.loading">
                     <v-progress-circular indeterminate size="60" color="blue-lighten-2" />
                 </div>
-
-                <!-- GRID -->
                 <v-row v-else dense>
                     <v-col v-for="stock in store.stocks" :key="stock.id" cols="6" sm="4" md="3" lg="2">
                         <v-hover v-slot="{ isHovering, props }">
@@ -36,7 +32,6 @@
                         </v-hover>
                     </v-col>
                 </v-row>
-
             </div>
         </v-expand-transition>
 
