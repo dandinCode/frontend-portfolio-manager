@@ -2,9 +2,10 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useAnalysisStore = defineStore('analysisStore', () => {
-  const selectedSymbols = ref<string[]>([])
-  const start = ref<string>('')
-  const end = ref<string>('')
+  const selectedSymbols = ref<string[]>([]);
+  const start = ref<string>('');
+  const end = ref<string>('');
+  const acceptableRisk = null as number | null;
 
   function toggleSymbol(symbol: string) {
     const i = selectedSymbols.value.indexOf(symbol)
@@ -17,5 +18,6 @@ export const useAnalysisStore = defineStore('analysisStore', () => {
     start,
     end,
     toggleSymbol,
+    acceptableRisk,
   }
 })

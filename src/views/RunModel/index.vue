@@ -15,6 +15,7 @@
                 Caso algum símbolo não exista, o modelo apenas **ignora** e segue com os outros.
             </v-alert>
             <DateRangeSelector />
+            <AcceptableRiskInput />
             <StockSelector />
             <v-divider class="my-6" />
 
@@ -30,6 +31,7 @@
 <script setup lang="ts">
 import StockSelector from "@/components/StockSelector.vue";
 import DateRangeSelector from "@/components/DateRangeSelector.vue";
+import AcceptableRiskInput from "@/components/AcceptableRiskInput.vue";
 import { useAnalysisStore } from "@/stores/analysisStore";
 
 const analysis = useAnalysisStore();
