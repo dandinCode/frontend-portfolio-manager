@@ -16,5 +16,5 @@ export interface PortfolioAnalysis {
   stocks: string[]
   start: string
   end: string
-  acceptableRisk: number
+  acceptableRisk?: number
 }
