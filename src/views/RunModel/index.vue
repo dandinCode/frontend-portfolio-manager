@@ -33,14 +33,30 @@ import StockSelector from "@/components/StockSelector.vue";
 import DateRangeSelector from "@/components/DateRangeSelector.vue";
 import AcceptableRiskInput from "@/components/AcceptableRiskInput.vue";
 import { useAnalysisStore } from "@/stores/analysisStore";
+import { analyzeStocks } from "@/services/analisys";
 
 const analysis = useAnalysisStore();
 
-function runModel() {
-    console.log({
+async function runModel() {
+    if (!analysis.selectedSymbols || analysis.selectedSymbols.length < 5) {
+        console.log("Selecione pelo menos 5 ações.");
+        return;
+    }
+
+    const payload = {
+        stocks: analysis.selectedSymbols,
         start: analysis.start,
         end: analysis.end,
-        symbols: analysis.selectedSymbols
-    });
+        acceptableRisk: analysis.acceptableRisk ?? null
+    };
+
+    console.log("Enviando payload:", payload);
+
+    try {
+        const result = await analyzeStocks(payload as any);
+        console.log("Resultado da análise:", result);
+    } catch (err) {
+        console.log("Erro na requisição:", err);
+    }
 }
 </script>
