@@ -34,12 +34,13 @@ import DateRangeSelector from "@/components/DateRangeSelector.vue";
 import AcceptableRiskInput from "@/components/AcceptableRiskInput.vue";
 import { useAnalysisStore } from "@/stores/analysisStore";
 import { analyzeStocks } from "@/services/analisys";
+import { notify } from "@/utils/toast";
 
 const analysis = useAnalysisStore();
 
 async function runModel() {
     if (!analysis.selectedSymbols || analysis.selectedSymbols.length < 5) {
-        console.log("Selecione pelo menos 5 ações.");
+        notify.error('Selecione pelo menos 5 ações.');
         return;
     }
 
@@ -50,13 +51,15 @@ async function runModel() {
         acceptableRisk: analysis.acceptableRisk ?? null
     };
 
-    console.log("Enviando payload:", payload);
+    notify.info('Aguarde enquanto o modelo é executado');
 
     try {
         const result = await analyzeStocks(payload as any);
-        console.log("Resultado da análise:", result);
+        console.log(result)
+        notify.success('Modelo executado com sucesso!');
     } catch (err) {
         console.log("Erro na requisição:", err);
+        notify.error('Erro ao executar modelo.');
     }
 }
 </script>
