@@ -12,14 +12,6 @@
       <v-btn class="mt-4" color="primary" block :loading="loading" @click="handleSubmit">
         Registrar Símbolo
       </v-btn>
-
-      <v-alert v-if="successMessage" type="success" class="mt-4" border="start">
-        {{ successMessage }}
-      </v-alert>
-
-      <v-alert v-if="errorMessage" type="error" class="mt-4" border="start">
-        {{ errorMessage }}
-      </v-alert>
     </v-card>
   </v-container>
 </template>
@@ -32,32 +24,27 @@ import { notify } from '@/utils/toast'
 const symbol = ref("");
 const createdById = ref<number | null>(null);
 const loading = ref(false);
-const successMessage = ref("");
-const errorMessage = ref("");
 
 async function handleSubmit() {
   loading.value = true;
-  successMessage.value = "";
-  errorMessage.value = "";
 
   try {
     if (!symbol.value || !createdById.value) {
-      errorMessage.value = "Preencha todos os campos.";
+      notify.error('Preencha todos os campos.')
       loading.value = false;
       return;
     }
 
     await createStock(symbol.value.trim(), createdById.value);
 
-    successMessage.value = "Símbolo registrado com sucesso!";
     notify.success('Símbolo registrado com sucesso!')
     symbol.value = "";
     createdById.value = null;
   } catch (error: any) {
     if (error?.response?.status === 409) {
-    notify.error('Símbolo já existe!')
+      notify.error('Símbolo já existe!')
     } else {
-    notify.error('Erro ao registrar símbolo.')
+      notify.error('Erro ao registrar símbolo.')
     }
   } finally {
     loading.value = false;
