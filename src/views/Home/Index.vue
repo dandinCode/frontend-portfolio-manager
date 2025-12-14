@@ -56,12 +56,14 @@
             </v-row>
         </v-container>
 
-        <v-container class="section darker">
-            <h2 class="text-h4 text-center mb-10 text-white">Como funciona?</h2>
-            <v-row>
+        <v-container class="section how-it-works">
+            <h2 class="text-h4 text-center mb-12 text-white glow">
+                Como funciona?
+            </h2>
+            <v-row align="stretch">
                 <v-col cols="12" md="4">
-                    <v-card class="pa-6 glass-card" elevation="0">
-                        <h3 class="text-h6 mb-2">1. Seleção de Ações</h3>
+                    <v-card class="how-card">
+                        <h3 class="text-h6 mb-3">1. Seleção de Ações</h3>
                         <p class="text-grey-lighten-1">
                             O usuário escolhe quais símbolos deseja analisar. Qualquer pessoa pode
                             cadastrar ações, cabendo ao investidor decidir se deseja utilizá-las
@@ -70,8 +72,8 @@
                     </v-card>
                 </v-col>
                 <v-col cols="12" md="4">
-                    <v-card class="pa-6 glass-card" elevation="0">
-                        <h3 class="text-h6 mb-2">2. Otimização Matemática</h3>
+                    <v-card class="how-card">
+                        <h3 class="text-h6 mb-3">2. Otimização Matemática</h3>
                         <p class="text-grey-lighten-1">
                             O modelo avalia retorno esperado, risco (volatilidade) e correlação entre
                             ativos para gerar uma carteira eficiente.
@@ -79,8 +81,8 @@
                     </v-card>
                 </v-col>
                 <v-col cols="12" md="4">
-                    <v-card class="pa-6 glass-card" elevation="0">
-                        <h3 class="text-h6 mb-2">3. Diversificação Inteligente</h3>
+                    <v-card class="how-card">
+                        <h3 class="text-h6 mb-3">3. Diversificação Inteligente</h3>
                         <p class="text-grey-lighten-1">
                             Além da diversificação entre ativos, o sistema também considera a
                             diversificação por setor econômico, reduzindo exposição concentrada.
@@ -132,10 +134,6 @@
     min-height: 100vh;
 }
 
-.section {
-    padding: 80px 0;
-}
-
 .darker {
     background: #0d1117;
 }
@@ -161,5 +159,37 @@
 
 .tcc-link:hover {
     text-decoration: underline;
+}
+
+.section {
+    padding: 100px 0;
+}
+
+.how-it-works {
+    background: linear-gradient(180deg,
+            rgba(13, 17, 23, 0) 0%,
+            rgba(13, 17, 23, 0.4) 50%,
+            rgba(13, 17, 23, 0) 100%);
+}
+
+.how-card {
+    height: 100%;
+    padding: 32px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    transition: all 0.3s ease;
+}
+
+.how-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 30px rgba(79, 140, 255, 0.25);
+    border-color: rgba(79, 140, 255, 0.4);
 }
 </style>
