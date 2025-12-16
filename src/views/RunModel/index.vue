@@ -46,8 +46,8 @@ async function runModel() {
 
     const payload = {
         stocks: analysis.selectedSymbols,
-        start: analysis.start,
-        end: analysis.end,
+        start: analysis.start ?? null,
+        end: analysis.end ?? null,
         acceptableRisk: analysis.acceptableRisk ?? null
     };
 
