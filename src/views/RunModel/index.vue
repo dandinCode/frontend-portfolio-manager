@@ -55,7 +55,16 @@ async function runModel() {
 
     try {
         const result = await analyzeStocks(payload as any);
-        console.log(result)
+        if (result.error || !result.optimization) {
+            console.error('Erro do modelo:', result.error);
+            notify.error(
+                result.error ??
+                'Falha ao otimizar a carteira.'
+            );
+            return;
+        }
+
+        console.log('Resultado otimizado:', result);
         notify.success('Modelo executado com sucesso!');
     } catch (err) {
         console.log("Erro na requisição:", err);
