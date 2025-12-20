@@ -39,13 +39,13 @@
                 </v-col>
                 <v-col cols="12" md="6">
                     <v-card class="pa-6 glass-card" elevation="0">
-                        <h3 class="text-h6 mb-2">Fontes de Dados</h3>
+                        <h3 class="text-h6 mb-2 section-title">Fontes de Dados</h3>
                         <p class="text-grey-lighten-1">
                             Os dados históricos de preços e retornos são obtidos automaticamente
                             através do Yahoo Finance, permitindo análises baseadas em informações
                             reais de mercado.
                         </p>
-                        <h3 class="text-h6 mt-4 mb-2">Período de Análise</h3>
+                        <h3 class="text-h6 mt-4 mb-2 section-title">Período de Análise</h3>
                         <p class="text-grey-lighten-1">
                             O usuário pode definir o período histórico a ser analisado. Caso nenhuma
                             data seja informada, o sistema utiliza automaticamente os últimos
@@ -192,4 +192,10 @@
     box-shadow: 0 0 30px rgba(79, 140, 255, 0.25);
     border-color: rgba(79, 140, 255, 0.4);
 }
+
+.section-title {
+  font-weight: 600;
+  color: #ffffff;
+}
+
 </style>
