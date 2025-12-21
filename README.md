@@ -36,7 +36,7 @@ VITE_BASE_URL=http://localhost:3000
 ```
 
 
-## Project Setup
+## Preparação
 
 ```sh
 npm install
