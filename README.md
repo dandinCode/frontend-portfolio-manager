@@ -17,6 +17,15 @@ Em termos práticos, ele responde à pergunta:
 
 > *“Dado esse conjunto de ações e essas preferências, como posso organizar minha carteira de forma mais racional?”*
 
+
+## Stack Tecnológica
+
+- Vue3 – Framework frontend principal 
+
+- Vuetify – Biblioteca de componentes UI, utilizada para construção de uma interface moderna e responsiva.
+
+- TypeScript – Linguagem base do projeto
+
 ## Project Setup
 
 ```sh
