@@ -1,28 +1,21 @@
 # frontend
 ## (Em desenvolvimento)
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+## O que é este sistema?
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Este projeto é uma plataforma de apoio à decisão para investimentos em ações, focada em ajudar pessoas a montar carteiras de investimento mais eficientes, de forma objetiva, personalizada e baseada em dados reais de mercado.
 
-## Recommended Browser Setup
+Em vez de o usuário precisar analisar manualmente dezenas de ações, indicadores financeiros e riscos, o sistema utiliza modelos matemáticos de otimização para sugerir como distribuir o capital entre diferentes ações, buscando sempre o melhor equilíbrio possível entre retorno e risco, de acordo com os parâmetros definidos pelo próprio usuário.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Em outras palavras:
+- o sistema não “adivinha” o mercado,
+- não promete ganhos garantidos,
+- mas organiza o investimento de forma racional, usando matemática, estatística e dados históricos.
 
-## Type Support for `.vue` Imports in TS
+Em termos práticos, ele responde à pergunta:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+> *“Dado esse conjunto de ações e essas preferências, como posso organizar minha carteira de forma mais racional?”*
 
 ## Project Setup
 
