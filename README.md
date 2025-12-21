@@ -26,6 +26,16 @@ Em termos práticos, ele responde à pergunta:
 
 - TypeScript – Linguagem base do projeto
 
+
+## Configuração do ambiente
+
+Crie um arquivo `.env` na raiz do projeto com:
+
+```env
+DATABASE_URL="mysql://root:senha@localhost:3306/portfolio_manager"
+```
+
+
 ## Project Setup
 
 ```sh
