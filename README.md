@@ -42,7 +42,7 @@ VITE_BASE_URL=http://localhost:3000
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Rodar projeto
 
 ```sh
 npm run dev
