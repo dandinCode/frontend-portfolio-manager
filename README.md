@@ -32,7 +32,7 @@ Em termos práticos, ele responde à pergunta:
 Crie um arquivo `.env` na raiz do projeto com:
 
 ```env
-DATABASE_URL="mysql://root:senha@localhost:3306/portfolio_manager"
+VITE_BASE_URL=http://localhost:3000
 ```
 
 
