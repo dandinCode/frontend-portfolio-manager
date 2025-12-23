@@ -102,14 +102,20 @@
             </p>
         </v-container>
 
-        <v-container class="section darker">
-            <h2 class="text-h4 mb-4 text-white">Visão de Futuro</h2>
-            <p class="text-grey-lighten-2">
-                O projeto está em constante evolução. Entre as ideias futuras estão a inclusão
-                de indicadores fundamentalistas, perfis de investimento pré-configurados e a
-                possibilidade de o usuário escolher quais critérios deseja considerar no
-                processo de otimização.
-            </p>
+        <v-container class="section future-section">
+            <h2 class="text-h4 text-center mb-12 text-white glow">
+                Visão de Futuro
+            </h2>
+            <v-row justify="center" class="mb-8">
+                <v-col cols="12" md="8">
+                    <p class="text-center text-grey-lighten-2 future-description">
+                        O projeto está em constante evolução. Entre as ideias futuras estão a inclusão
+                        de indicadores fundamentalistas, perfis de investimento pré-configurados e a
+                        possibilidade de o usuário escolher quais critérios deseja considerar no
+                        processo de otimização.
+                    </p>
+                </v-col>
+            </v-row>
         </v-container>
 
         <v-container class="section footer">
@@ -194,8 +200,12 @@
 }
 
 .section-title {
-  font-weight: 600;
-  color: #ffffff;
+    font-weight: 600;
+    color: #ffffff;
 }
 
+.future-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
 </style>
