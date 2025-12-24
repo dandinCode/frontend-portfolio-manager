@@ -92,14 +92,34 @@
             </v-row>
         </v-container>
 
-        <v-container class="section">
+        <v-container class="section text-center">
             <h2 class="text-h4 mb-4 text-white">O que este projeto NÃO é</h2>
-            <p class="text-grey-lighten-2">
-                Este sistema não é uma ferramenta de recomendação financeira, não substitui
-                um assessor de investimentos e não garante retornos. O objetivo é fornecer
-                apoio quantitativo à decisão, permitindo que o usuário compreenda melhor
-                possíveis cenários de alocação de ativos.
-            </p>
+            <v-list-item class="mb-2">
+                <v-list-item-title class="text-white">
+                    Não é uma ferramenta de recomendação financeira
+                </v-list-item-title>
+                <v-list-item-subtitle class="text-grey-lighten-1">
+                    O sistema não indica compras ou vendas de ativos.
+                </v-list-item-subtitle>
+            </v-list-item>
+
+            <v-list-item class="mb-2">
+                <v-list-item-title class="text-white">
+                    Não substitui um assessor de investimentos
+                </v-list-item-title>
+                <v-list-item-subtitle class="text-grey-lighten-1">
+                    As decisões finais devem sempre considerar contexto pessoal e orientação profissional.
+                </v-list-item-subtitle>
+            </v-list-item>
+
+            <v-list-item>
+                <v-list-item-title class="text-white">
+                    Não garante retornos
+                </v-list-item-title>
+                <v-list-item-subtitle class="text-grey-lighten-1">
+                    Os resultados são baseados em modelos matemáticos e dados históricos.
+                </v-list-item-subtitle>
+            </v-list-item>
         </v-container>
 
         <v-container class="section future-section">
