@@ -10,10 +10,10 @@
                     baseada em dados históricos, diversificação setorial e modelos matemáticos
                     de otimização.
                 </p>
-                <v-btn size="x-large" color="blue-accent-3" class="mr-4" to="/run-model">
+                <v-btn size="x-large" color="blue-accent-3" class="mr-4" to="/RunModel">
                     Começar Análise
                 </v-btn>
-                <v-btn size="x-large" variant="outlined" color="grey-lighten-2" to="/symbols">
+                <v-btn size="x-large" variant="outlined" color="grey-lighten-2" to="/AddSymbol">
                     Gerenciar Símbolos
                 </v-btn>
             </v-col>
