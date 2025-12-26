@@ -63,7 +63,7 @@
             <v-row align="stretch">
                 <v-col cols="12" md="4">
                     <v-card class="how-card">
-                        <h3 class="text-h6 mb-3">1. Seleção de Ações</h3>
+                        <h3 class="text-h6 font-weight-bold mb-3 text-white">1. Seleção de Ações</h3>
                         <p class="text-grey-lighten-1">
                             O usuário escolhe quais símbolos deseja analisar. Qualquer pessoa pode
                             cadastrar ações, cabendo ao investidor decidir se deseja utilizá-las
@@ -73,7 +73,7 @@
                 </v-col>
                 <v-col cols="12" md="4">
                     <v-card class="how-card">
-                        <h3 class="text-h6 mb-3">2. Otimização Matemática</h3>
+                        <h3 class="text-h6 font-weight-bold mb-3 text-white">2. Otimização Matemática</h3>
                         <p class="text-grey-lighten-1">
                             O modelo avalia retorno esperado, risco (volatilidade) e correlação entre
                             ativos para gerar uma carteira eficiente.
@@ -82,7 +82,7 @@
                 </v-col>
                 <v-col cols="12" md="4">
                     <v-card class="how-card">
-                        <h3 class="text-h6 mb-3">3. Diversificação Inteligente</h3>
+                        <h3 class="text-h6 font-weight-bold mb-3 text-white">3. Diversificação Inteligente</h3>
                         <p class="text-grey-lighten-1">
                             Além da diversificação entre ativos, o sistema também considera a
                             diversificação por setor econômico, reduzindo exposição concentrada.
