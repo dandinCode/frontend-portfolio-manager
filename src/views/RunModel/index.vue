@@ -24,8 +24,10 @@
                 Rodar Modelo com {{ analysis.selectedSymbols.length }} ações
             </v-btn>
 
+            <ModelResult v-if="modelResult" :optimization="modelResult.optimization" />
         </v-sheet>
     </v-container>
+
 </template>
 
 <script setup lang="ts">
@@ -34,8 +36,11 @@ import DateRangeSelector from "@/components/DateRangeSelector.vue";
 import AcceptableRiskInput from "@/components/AcceptableRiskInput.vue";
 import { useAnalysisStore } from "@/stores/analysisStore";
 import { analyzeStocks } from "@/services/analisys";
+import ModelResult from "@/components/ModelResult.vue";
 import { notify } from "@/utils/toast";
+import { ref } from 'vue';
 
+const modelResult = ref<any | null>(null);
 const analysis = useAnalysisStore();
 
 async function runModel() {
@@ -55,19 +60,16 @@ async function runModel() {
 
     try {
         const result = await analyzeStocks(payload as any);
+
         if (result.error || !result.optimization) {
-            console.error('Erro do modelo:', result.error);
-            notify.error(
-                result.error ??
-                'Falha ao otimizar a carteira.'
-            );
+            notify.error(result.error ?? 'Falha ao otimizar a carteira.');
             return;
         }
-
         console.log('Resultado otimizado:', result);
+        modelResult.value = result;
         notify.success('Modelo executado com sucesso!');
     } catch (err) {
-        console.log("Erro na requisição:", err);
+        console.error(err);
         notify.error('Erro ao executar modelo.');
     }
 }
