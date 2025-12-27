@@ -1,8 +1,20 @@
 <template>
     <div>
-        <v-row>
-            <v-col class="d-flex justify-end">
-                <v-btn variant="outlined" color="grey-lighten-2" @click="hidden = !hidden">
+        <v-row class="mb-2">
+            <v-col class="d-flex justify-space-between align-center">
+                <div class="d-flex gap-2">
+                    <v-btn size="small" variant="outlined" color="blue-lighten-2" @click="selectAll"
+                        :disabled="stocks.symbols.length === 0">
+                        Selecionar todas
+                    </v-btn>
+
+                    <v-btn size="small" variant="outlined" color="red-lighten-2" @click="analysis.clearSelection"
+                        :disabled="analysis.selectedSymbols.length === 0">
+                        Limpar seleção
+                    </v-btn>
+                </div>
+
+                <v-btn size="small" variant="outlined" color="grey-lighten-2" @click="hidden = !hidden">
                     {{ hidden ? 'Mostrar ações' : 'Ocultar ações' }}
                 </v-btn>
             </v-col>
@@ -50,6 +62,11 @@ onMounted(() => {
         stocks.loadStocks();
     }
 });
+
+function selectAll() {
+    const symbols = stocks.symbols.map(s => s.symbol);
+    analysis.selectAll(symbols);
+}
 </script>
 
 <style scoped>
