@@ -23,6 +23,11 @@ const router = createRouter({
       name: 'RunModel',
       component: () => import('../views/RunModel/index.vue'),
     },
+    {
+      path: '/Register',
+      name: 'Register',
+      component: () => import('../views/Register/index.vue'),
+    },
   ],
 })
 

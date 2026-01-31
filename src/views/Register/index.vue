@@ -1,0 +1,100 @@
+<template>
+    <v-container fluid class="register-hero d-flex justify-center align-center">
+        <v-card class="register-card pa-8" width="460" elevation="0">
+            <div class="text-center mb-6">
+                <h1 class="text-h4 text-white glow mb-2">Criar Conta</h1>
+                <p class="text-grey-lighten-1">
+                    Junte-se ao <strong>Talos</strong> e construa carteiras de investimento
+          com apoio quantitativo.
+                </p>
+            </div>
+
+            <v-text-field v-model="name" label="Nome" variant="outlined" prepend-inner-icon="mdi-account-outline"
+                class="text-white mb-4" />
+
+            <v-text-field v-model="email" label="Email" type="email" variant="outlined"
+                prepend-inner-icon="mdi-email-outline" class="text-white mb-4" />
+
+            <v-text-field v-model="password" label="Senha" type="password" variant="outlined"
+                prepend-inner-icon="mdi-lock-outline" class="text-white mb-6" />
+
+            <v-btn color="blue-accent-3" size="large" block :loading="loading" @click="handleRegister">
+                Criar Conta
+            </v-btn>
+
+            <div class="text-center mt-6">
+                <span class="text-grey-lighten-1">Já tem conta?</span>
+                <RouterLink to="/login" class="link">Entrar</RouterLink>
+            </div>
+        </v-card>
+    </v-container>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { notify } from '@/utils/toast';
+
+const name = ref('');
+const email = ref('');
+const password = ref('');
+const loading = ref(false);
+
+async function handleRegister() {
+    if (!name.value || !email.value || !password.value) {
+        notify.error('Preencha todos os campos.');
+        return;
+    }
+
+    loading.value = true;
+
+    try {
+        console.log({
+            name: name.value,
+            email: email.value,
+            password: password.value,
+        });
+
+        notify.success('Conta criada com sucesso!');
+    } catch {
+        notify.error('Erro ao criar conta.');
+    } finally {
+        loading.value = false;
+    }
+}
+</script>
+
+<style scoped>
+.register-hero {
+    width: 100vw;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1a237e, #0d1117);
+}
+
+.register-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    transition: all 0.3s ease;
+}
+
+.register-card:hover {
+    transform: translateY(-4px);
+    padding-left: 20px;
+    box-shadow: 0 0 40px rgba(79, 140, 255, 0.35);
+}
+
+.glow {
+    text-shadow: 0 0 22px rgba(79, 140, 255, 0.7);
+}
+
+.link {
+    margin-left: 6px;
+    color: #4f8cff;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+</style>
