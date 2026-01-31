@@ -56,7 +56,7 @@
             </v-row>
         </v-container>
 
-        <v-container class="section how-it-works">
+        <v-container class="section">
             <h2 class="text-h4 text-center mb-12 text-white glow">
                 Como funciona?
             </h2>
@@ -189,13 +189,6 @@
 
 .section {
     padding: 100px 0;
-}
-
-.how-it-works {
-    background: linear-gradient(180deg,
-            rgba(13, 17, 23, 0) 0%,
-            rgba(13, 17, 23, 0.4) 50%,
-            rgba(13, 17, 23, 0) 100%);
 }
 
 .how-card {
