@@ -5,7 +5,7 @@
                 <h1 class="text-h4 text-white glow mb-2">Criar Conta</h1>
                 <p class="text-grey-lighten-1">
                     Junte-se ao <strong>Talos</strong> e construa carteiras de investimento
-          com apoio quantitativo.
+                    com apoio quantitativo.
                 </p>
             </div>
 
@@ -75,13 +75,14 @@ async function handleRegister() {
     border: 1px solid rgba(255, 255, 255, 0.18);
     backdrop-filter: blur(14px);
     border-radius: 18px;
-    transition: all 0.3s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .register-card:hover {
-    transform: translateY(-4px);
-    padding-left: 20px;
-    box-shadow: 0 0 40px rgba(79, 140, 255, 0.35);
+    transform: scale(1.025);
+    box-shadow:
+        0 0 0 1px rgba(79, 140, 255, 0.25),
+        0 0 45px rgba(79, 140, 255, 0.35);
 }
 
 .glow {
