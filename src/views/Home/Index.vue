@@ -2,8 +2,8 @@
     <v-container fluid class="home-hero">
         <v-row class="fill-height align-center justify-center text-center">
             <v-col cols="12" md="10" lg="8">
-                <h1 class="display-2 font-weight-bold mb-6 text-white glow">
-                    Portfolio Manager
+                <h1 class="text-h2 font-weight-black mt-6 mb-6 text-white glow">
+                    Talos
                 </h1>
                 <p class="text-h6 text-grey-lighten-2 mb-10">
                     Uma plataforma inteligente para criação e otimização de carteiras de investimento em ações
