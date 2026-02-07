@@ -35,6 +35,7 @@
 import { ref } from 'vue';
 import { notify } from '@/utils/toast';
 import { createUser } from '@/services/user';
+import { isValidEmail, isValidName, isValidPassword } from '@/utils/validators';
 
 const name = ref('');
 const email = ref('');
@@ -47,15 +48,26 @@ async function handleRegister() {
         return;
     }
 
+    if (!isValidName(name.value)) {
+        notify.error('Nome inválido.');
+        return;
+    }
+
+    if (!isValidEmail(email.value)) {
+        notify.error('Email inválido.');
+        return;
+    }
+
+    if (!isValidPassword(password.value)) {
+        notify.error(
+            'A senha deve ter no mínimo 8 caracteres, letras, números e um caractere especial.'
+        );
+        return;
+    }
+
     loading.value = true;
 
     try {
-        console.log({
-            name: name.value,
-            email: email.value,
-            password: password.value,
-        });
-
         const { access_token } = await createUser(name.value, email.value, password.value);
 
         localStorage.setItem('token', access_token);
