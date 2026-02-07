@@ -18,3 +18,7 @@ export interface PortfolioAnalysis {
   end: string
   acceptableRisk?: number
 }
+
+export interface AuthResponse {
+  access_token: string
+}

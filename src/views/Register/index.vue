@@ -18,7 +18,8 @@
             <v-text-field v-model="password" label="Senha" type="password" variant="outlined"
                 prepend-inner-icon="mdi-lock-outline" class="text-white mb-6" />
 
-            <v-btn color="blue-accent-3" size="large" block :loading="loading" @click="handleRegister">
+            <v-btn color="blue-accent-3" size="large" block :loading="loading" :disabled="loading"
+                @click="handleRegister">
                 Criar Conta
             </v-btn>
 
@@ -33,6 +34,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { notify } from '@/utils/toast';
+import { createUser } from '@/services/user';
 
 const name = ref('');
 const email = ref('');
@@ -53,6 +55,10 @@ async function handleRegister() {
             email: email.value,
             password: password.value,
         });
+
+        const { access_token } = await createUser(name.value, email.value, password.value);
+
+        localStorage.setItem('token', access_token);
 
         notify.success('Conta criada com sucesso!');
     } catch {
