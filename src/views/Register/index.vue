@@ -73,8 +73,11 @@ async function handleRegister() {
         localStorage.setItem('token', access_token);
 
         notify.success('Conta criada com sucesso!');
-    } catch {
-        notify.error('Erro ao criar conta.');
+    } catch (error: any) {
+        const message =
+            error?.response?.data?.message || 'Erro ao criar conta';
+
+        notify.error(message);
     } finally {
         loading.value = false;
     }
