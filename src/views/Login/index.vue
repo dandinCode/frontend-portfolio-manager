@@ -38,6 +38,35 @@ const email = ref('');
 const password = ref('');
 const loading = ref(false);
 
+async function handleLogin() {
+    if (!email.value || !password.value) {
+        notify.error('Preencha todos os campos.');
+        return;
+    }
+
+    if (!isValidEmail(email.value)) {
+        notify.error('Email inválido.');
+        return;
+    }
+
+    loading.value = true;
+
+    try {
+        const { access_token } = await login(email.value, password.value);
+
+        localStorage.setItem('token', access_token);
+
+        notify.success('Login realizado com sucesso!');
+        router.push('/');
+    } catch (error: any) {
+        const message =
+            error?.response?.data?.message || 'Erro ao logar na conta';
+
+        notify.error(message);
+    } finally {
+        loading.value = false;
+    }
+}
 </script>
 
 <style scoped>

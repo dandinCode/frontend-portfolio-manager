@@ -22,3 +22,7 @@ export interface PortfolioAnalysis {
 export interface AuthResponse {
   access_token: string
 }
+
+export interface LoginResponse {
+  access_token: string
+}
