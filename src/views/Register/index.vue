@@ -15,8 +15,7 @@
             <v-text-field v-model="email" label="Email" type="email" variant="outlined"
                 prepend-inner-icon="mdi-email-outline" class="text-white mb-4" />
 
-            <v-text-field v-model="password" label="Senha" type="password" variant="outlined"
-                prepend-inner-icon="mdi-lock-outline" class="text-white mb-6" />
+            <PasswordField v-model="password" class="mb-6" />
 
             <v-btn color="blue-accent-3" size="large" block :loading="loading" :disabled="loading"
                 @click="handleRegister">
@@ -36,6 +35,7 @@ import { ref } from 'vue';
 import { notify } from '@/utils/toast';
 import { createUser } from '@/services/user';
 import { isValidEmail, isValidName, isValidPassword } from '@/utils/validators';
+import PasswordField from '@/components/PasswordField.vue';
 
 const name = ref('');
 const email = ref('');

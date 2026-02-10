@@ -11,6 +11,7 @@ import * as directives from 'vuetify/directives'
 import { createPinia } from 'pinia'
 import Vue3Toastify from 'vue3-toastify'
 import 'vue3-toastify/dist/index.css'
+import '@mdi/font/css/materialdesignicons.css'
 
 const vuetify = createVuetify({
   components,

@@ -11,8 +11,7 @@
             <v-text-field v-model="email" label="Email" type="email" variant="outlined"
                 prepend-inner-icon="mdi-email-outline" class="text-white mb-4" />
 
-            <v-text-field v-model="password" label="Senha" type="password" variant="outlined"
-                prepend-inner-icon="mdi-lock-outline" class="text-white mb-6" />
+            <PasswordField v-model="password" class="mb-6" />
 
             <v-btn color="blue-accent-3" size="large" block :loading="loading" :disabled="loading" @click="handleLogin">
                 Entrar
@@ -32,6 +31,7 @@ import { useRouter } from 'vue-router';
 import { notify } from '@/utils/toast';
 import { login } from '@/services/user';
 import { isValidEmail } from '@/utils/validators';
+import PasswordField from '@/components/PasswordField.vue';
 const router = useRouter();
 
 const email = ref('');
