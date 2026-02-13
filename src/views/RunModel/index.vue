@@ -1,33 +1,29 @@
 <template>
-    <v-container class="py-6">
-        <v-sheet color="#1e1e1e" rounded elevation="4" class="pa-6">
+    <div class="run-model-bg">
+        <v-container class="py-6">
+            <v-sheet color="#1e1e1e" rounded elevation="4" class="pa-6">
 
-            <h2 class="text-h5 mb-2 text-white">Executar Modelo de Seleção</h2>
+                <h2 class="text-h5 mb-2 text-white">Executar Modelo de Seleção</h2>
 
-            <v-alert type="info" variant="tonal" class="mb-6" color="blue-darken-2">
-                Ao passar o mouse por cima das ações você poderá ver o status dela.
-                <br />
-                <strong>validated</strong> = ação verificada ✔
-                <strong>pending</strong> = ação ainda não verificada
-                <strong>invalid</strong> = ação possivelmente inexistente / não encontrada
-                <br><br>
-                Qualquer pessoa pode cadastrar symbols. Cabe a você decidir se quer rodar o modelo com eles.
-                Caso algum símbolo não exista, o modelo apenas **ignora** e segue com os outros.
-            </v-alert>
-            <DateRangeSelector />
-            <AcceptableRiskInput />
-            <StockSelector />
-            <v-divider class="my-6" />
+                <v-alert type="info" variant="tonal" class="mb-6" color="blue-darken-2">
+                    ...
+                </v-alert>
 
-            <v-btn color="blue-accent-3" size="large" block :disabled="analysis.selectedSymbols.length === 0"
-                @click="runModel">
-                Rodar Modelo com {{ analysis.selectedSymbols.length }} ações
-            </v-btn>
+                <DateRangeSelector />
+                <AcceptableRiskInput />
+                <StockSelector />
 
-            <ModelResult v-if="modelResult" :optimization="modelResult.optimization" />
-        </v-sheet>
-    </v-container>
+                <v-divider class="my-6" />
 
+                <v-btn color="blue-accent-3" size="large" block :disabled="analysis.selectedSymbols.length === 0"
+                    @click="runModel">
+                    Rodar Modelo com {{ analysis.selectedSymbols.length }} ações
+                </v-btn>
+
+                <ModelResult v-if="modelResult" :optimization="modelResult.optimization" />
+            </v-sheet>
+        </v-container>
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -74,3 +70,10 @@ async function runModel() {
     }
 }
 </script>
+
+<style scoped>
+.run-model-bg {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #291f01, #050400);
+}
+</style>
