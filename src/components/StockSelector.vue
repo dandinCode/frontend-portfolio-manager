@@ -4,7 +4,7 @@
             <v-col class="d-flex justify-space-between align-center">
                 <div class="d-flex gap-2">
                     <v-btn size="small" variant="outlined" color="blue-lighten-2" @click="selectAll"
-                        :disabled="stocks.symbols.length === 0">
+                        :disabled="stocks.filteredSymbols.length === 0">
                         Selecionar todas
                     </v-btn>
 
@@ -19,13 +19,17 @@
                 </v-btn>
             </v-col>
         </v-row>
+
+        <stock-search />
+
         <v-expand-transition>
             <div v-show="!hidden">
                 <div class="d-flex justify-center my-10" v-if="stocks.loading">
                     <v-progress-circular indeterminate size="60" color="blue-lighten-2" />
                 </div>
+
                 <v-row v-else dense>
-                    <v-col v-for="stock in stocks.symbols" :key="stock.id" cols="6" sm="4" md="3" lg="2">
+                    <v-col v-for="stock in stocks.filteredSymbols" :key="stock.id" cols="6" sm="4" md="3" lg="2">
                         <v-hover v-slot="{ isHovering, props }">
                             <v-card v-bind="props"
                                 class="pa-4 d-flex align-center justify-center text-center selectable-card" :class="{
@@ -42,6 +46,12 @@
                             </v-card>
                         </v-hover>
                     </v-col>
+
+                    <v-col v-if="stocks.filteredSymbols.length === 0 && !stocks.loading" cols="12">
+                        <v-alert type="info" variant="tonal" class="mt-4">
+                            Nenhuma ação encontrada para "{{ stocks.searchTerm }}"
+                        </v-alert>
+                    </v-col>
                 </v-row>
             </div>
         </v-expand-transition>
@@ -52,6 +62,7 @@
 import { ref, onMounted } from "vue";
 import { useStocksStore } from "@/stores/stocksStore";
 import { useAnalysisStore } from "@/stores/analysisStore";
+import StockSearch from "./StockSearch.vue";
 
 const stocks = useStocksStore();
 const analysis = useAnalysisStore();
@@ -64,7 +75,7 @@ onMounted(() => {
 });
 
 function selectAll() {
-    const symbols = stocks.symbols.map(s => s.symbol);
+    const symbols = stocks.filteredSymbols.map(s => s.symbol);
     analysis.selectAll(symbols);
 }
 </script>
@@ -87,5 +98,9 @@ function selectAll() {
     border-color: #2f86ff !important;
     color: white !important;
     transform: scale(1.05);
+}
+
+.gap-2 {
+    gap: 8px;
 }
 </style>
