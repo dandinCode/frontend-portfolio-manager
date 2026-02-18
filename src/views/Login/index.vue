@@ -29,10 +29,12 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { notify } from '@/utils/toast';
-import { login } from '@/services/user';
 import { isValidEmail } from '@/utils/validators';
+import { useUserStore } from '@/stores/userStore';
 import PasswordField from '@/components/PasswordField.vue';
+
 const router = useRouter();
+const userStore = useUserStore();
 
 const email = ref('');
 const password = ref('');
@@ -50,24 +52,20 @@ async function handleLogin() {
     }
 
     loading.value = true;
-
     try {
-        const { access_token } = await login(email.value, password.value);
-
-        localStorage.setItem('token', access_token);
-
+        await userStore.login(email.value, password.value);
         notify.success('Login realizado com sucesso!');
         router.push('/');
     } catch (error: any) {
-        const message =
-            error?.response?.data?.message || 'Erro ao logar na conta';
-
-        notify.error(message);
+        notify.error(
+            error?.response?.data?.message || 'Erro ao logar na conta'
+        );
     } finally {
         loading.value = false;
     }
 }
 </script>
+
 
 <style scoped>
 .login-hero {
