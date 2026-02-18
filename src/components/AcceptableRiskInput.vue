@@ -34,15 +34,26 @@ function validate() {
 
     const numeric = Number(value);
 
-    if (isNaN(numeric) || numeric < 0) {
+    if (isNaN(numeric)) {
         hasError.value = true;
-        errorMessage.value = "Digite um número positivo (ex: 2 ou 2.5)";
+        errorMessage.value = "Digite apenas números (ex: 2 ou 2.5)";
+        return;
+    }
+
+    if (numeric < 0) {
+        hasError.value = true;
+        errorMessage.value = "O risco deve ser um número positivo";
+        return;
+    }
+
+    if (numeric === 0) {
+        hasError.value = true;
+        errorMessage.value = "O risco deve ser maior que zero";
         return;
     }
 
     hasError.value = false;
     errorMessage.value = "";
-    
     analysis.acceptableRisk = numeric;
 }
 
