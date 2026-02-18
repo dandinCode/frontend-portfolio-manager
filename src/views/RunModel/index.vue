@@ -52,12 +52,21 @@ async function runModel() {
         return;
     }
 
-    const payload = {
-        stocks: analysis.selectedSymbols,
-        start: analysis.start ?? null,
-        end: analysis.end ?? null,
-        acceptableRisk: analysis.acceptableRisk ?? null
-    };
+    const payload: any = {
+        stocks: analysis.selectedSymbols
+    }
+
+    if (analysis.start && analysis.start.trim() !== '') {
+        payload.start = analysis.start
+    }
+
+    if (analysis.end && analysis.end.trim() !== '') {
+        payload.end = analysis.end
+    }
+
+    if (analysis.acceptableRisk !== null && analysis.acceptableRisk !== undefined) {
+        payload.acceptableRisk = analysis.acceptableRisk
+    }
 
     notify.info('Aguarde enquanto o modelo é executado');
 
