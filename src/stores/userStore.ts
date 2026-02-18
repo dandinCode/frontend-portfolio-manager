@@ -1,10 +1,16 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { login as loginService, createUser } from '@/services/user'
+import { isTokenExpired } from '@/utils/jwt'
 
 export const useUserStore = defineStore('user', () => {
   const token = ref<string | null>(localStorage.getItem('token'))
   const loading = ref(false)
+
+  if (token.value && isTokenExpired(token.value)) {
+    token.value = null
+    localStorage.removeItem('token')
+  }
 
   const isAuthenticated = computed(() => !!token.value)
 
