@@ -4,6 +4,10 @@
             <h2 class="text-h5 mb-6 text-white">
                 Resultado da Otimização
             </h2>
+            <v-btn class="mb-6" color="green-accent-3" variant="outlined" @click="openSaveModal = true">
+                Salvar Portfólio
+            </v-btn>
+
             <v-row class="mb-6">
                 <v-col cols="12" md="4">
                     <v-card class="pa-4 glass-card">
@@ -59,10 +63,17 @@
             </v-row>
         </v-sheet>
     </v-container>
+    <SavePortfolioModal v-model="openSaveModal" @confirm="handleSave" />
+
 </template>
 
 <script setup lang="ts">
-defineProps<{
+import { ref } from 'vue';
+import { notify } from '@/utils/toast';
+import { savePortfolio } from '@/services/analisys';
+import SavePortfolioModal from '@/components/SavePortfolioModal.vue';
+
+const props = defineProps<{
     optimization: {
         dividend_yield: number;
         portfolio_risk: number;
@@ -75,7 +86,26 @@ defineProps<{
         allocation_by_sector: Record<string, number>;
     };
 }>();
+
+const openSaveModal = ref(false);
+
+async function handleSave(name: string) {
+    try {
+        await savePortfolio({
+            name,
+            optimization: props.optimization,
+        });
+
+        notify.success('Portfólio salvo com sucesso!');
+        openSaveModal.value = false;
+    } catch (error: any) {
+        notify.error(
+            error?.response?.data?.message || 'Erro ao salvar portfólio'
+        );
+    }
+}
 </script>
+
 
 <style scoped>
 .glass-card {

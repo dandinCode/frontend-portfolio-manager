@@ -12,7 +12,6 @@ export async function analyzeStocks(portfolioAnalysis: PortfolioAnalysis) {
 }
 
 export async function savePortfolio(payload: SavePortfolioPayload) {
-  console.log(payload)
   const { data } = await analysisApi.post('/portfolios', payload)
   return data
 }
