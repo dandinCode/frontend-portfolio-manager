@@ -6,7 +6,14 @@
                 <h2 class="text-h5 mb-2 text-white">Executar Modelo de Seleção</h2>
 
                 <v-alert type="info" variant="tonal" class="mb-6" color="blue-darken-2">
-                    ...
+                    Ao passar o mouse por cima das ações você poderá ver o status dela.
+                    <br />
+                    <strong>validated</strong> = ação verificada |
+                    <strong>pending</strong> = ação ainda não verificada |
+                    <strong>invalid</strong> = ação possivelmente inexistente / não encontrada
+                    <br><br>
+                    Qualquer pessoa pode cadastrar symbols. Cabe a você decidir se quer rodar o modelo com eles.
+                    Caso algum símbolo não exista, o modelo apenas **ignora** e segue com os outros.
                 </v-alert>
 
                 <DateRangeSelector />
