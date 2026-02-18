@@ -33,9 +33,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { notify } from '@/utils/toast';
-import { createUser } from '@/services/user';
 import { isValidEmail, isValidName, isValidPassword } from '@/utils/validators';
+import { useUserStore } from '@/stores/userStore';
 import PasswordField from '@/components/PasswordField.vue';
+
+const userStore = useUserStore();
 
 const name = ref('');
 const email = ref('');
@@ -66,23 +68,19 @@ async function handleRegister() {
     }
 
     loading.value = true;
-
     try {
-        const { access_token } = await createUser(name.value, email.value, password.value);
-
-        localStorage.setItem('token', access_token);
-
+        await userStore.register(name.value, email.value, password.value);
         notify.success('Conta criada com sucesso!');
     } catch (error: any) {
-        const message =
-            error?.response?.data?.message || 'Erro ao criar conta';
-
-        notify.error(message);
+        notify.error(
+            error?.response?.data?.message || 'Erro ao criar conta'
+        );
     } finally {
         loading.value = false;
     }
 }
 </script>
+
 
 <style scoped>
 .register-hero {
