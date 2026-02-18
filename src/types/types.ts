@@ -26,3 +26,7 @@ export interface AuthResponse {
 export interface LoginResponse {
   access_token: string
 }
+export interface SavePortfolioPayload {
+  name: string
+  optimization: any
+}
