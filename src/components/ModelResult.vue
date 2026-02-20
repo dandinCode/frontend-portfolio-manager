@@ -70,7 +70,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { notify } from '@/utils/toast';
-import { savePortfolio } from '@/services/analisys';
+import { savePortfolio } from '@/services/portfolio';
 import SavePortfolioModal from '@/components/SavePortfolioModal.vue';
 
 const props = defineProps<{

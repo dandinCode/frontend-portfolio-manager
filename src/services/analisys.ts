@@ -1,4 +1,4 @@
-import type { PortfolioAnalysis, SavePortfolioPayload } from '../types/types'
+import type { PortfolioAnalysis } from '../types/types'
 import { analysisApi } from './http/analysisApi'
 
 export async function analyzeStocks(portfolioAnalysis: PortfolioAnalysis) {
@@ -9,9 +9,4 @@ export async function analyzeStocks(portfolioAnalysis: PortfolioAnalysis) {
     console.error('Erro ao analisar ações:', error)
     throw error
   }
-}
-
-export async function savePortfolio(payload: SavePortfolioPayload) {
-  const { data } = await analysisApi.post('/portfolios', payload)
-  return data
 }
