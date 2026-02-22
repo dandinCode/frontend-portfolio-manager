@@ -28,5 +28,7 @@ export interface LoginResponse {
 }
 export interface SavePortfolioPayload {
   name: string
-  optimization: any
+  totalRisk: number
+  totalReturn: number
+  stocks: string[]
 }

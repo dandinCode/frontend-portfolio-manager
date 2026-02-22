@@ -93,7 +93,11 @@ async function handleSave(name: string) {
     try {
         await savePortfolio({
             name,
-            optimization: props.optimization,
+            totalRisk: props.optimization.portfolio_risk,
+            totalReturn: props.optimization.dividend_yield,
+            stocks: props.optimization.stock_allocation.map(
+                item => item.stock
+            ),
         });
 
         notify.success('Portfólio salvo com sucesso!');
