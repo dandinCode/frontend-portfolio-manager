@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer v-model="drawer" :rail="collapsed" color="#0f172a">
+    <v-navigation-drawer v-model="drawer" :rail="collapsed" permanent color="#0f172a">
         <div class="logo">
             <v-icon size="28">mdi-finance</v-icon>
             <span v-if="!collapsed">Portfolio</span>

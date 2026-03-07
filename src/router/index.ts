@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AppLayout from '@/layouts/AppLayout.vue'
+import { isTokenExpired } from '@/utils/jwt'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,6 +24,7 @@ const router = createRouter({
     {
       path: '/',
       component: AppLayout,
+      meta: { requiresAuth: true },
       children: [
         {
           path: 'AddSymbol',
@@ -37,6 +39,25 @@ const router = createRouter({
       ],
     },
   ],
+})
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token')
+
+  if (token && isTokenExpired(token)) {
+    localStorage.removeItem('token')
+    return next('/login')
+  }
+
+  if (to.meta.requiresAuth && !token) {
+    return next('/login')
+  }
+
+  if ((to.path === '/login' || to.path === '/register') && token) {
+    return next('/')
+  }
+
+  next()
 })
 
 export default router
