@@ -1,4 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
+import AppLayout from '@/layouts/AppLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -6,32 +7,34 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: () => import('../views/Home/index.vue'),
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue'),
-    },
-    {
-      path: '/AddSymbol',
-      name: 'AddSymbol',
-      component: () => import('../views/AddSymbol/index.vue'),
-    },
-    {
-      path: '/RunModel',
-      name: 'RunModel',
-      component: () => import('../views/RunModel/index.vue'),
-    },
-    {
-      path: '/Register',
-      name: 'legister',
-      component: () => import('../views/Register/index.vue'),
+      component: () => import('../views/Home/Index.vue'),
     },
     {
       path: '/login',
       name: 'Login',
       component: () => import('../views/Login/index.vue'),
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: () => import('../views/Register/index.vue'),
+    },
+
+    {
+      path: '/',
+      component: AppLayout,
+      children: [
+        {
+          path: 'AddSymbol',
+          name: 'AddSymbol',
+          component: () => import('../views/AddSymbol/index.vue'),
+        },
+        {
+          path: 'RunModel',
+          name: 'RunModel',
+          component: () => import('../views/RunModel/index.vue'),
+        },
+      ],
     },
   ],
 })
