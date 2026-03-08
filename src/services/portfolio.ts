@@ -1,7 +1,7 @@
 import type { SavePortfolioPayload } from '../types/types'
-import { analysisApi } from './http/analysisApi'
+import { api } from './http/api'
 
 export async function savePortfolio(payload: SavePortfolioPayload) {
-  const { data } = await analysisApi.post('/portfolio', payload)
+  const { data } = await api.post('/portfolio', payload)
   return data
 }
