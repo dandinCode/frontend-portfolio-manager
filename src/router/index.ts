@@ -36,6 +36,11 @@ const router = createRouter({
           name: 'RunModel',
           component: () => import('../views/RunModel/index.vue'),
         },
+        {
+          path: 'Portfolio',
+          name: 'Portfolio',
+          component: () => import('../views/Portfolio/index.vue'),
+        },
       ],
     },
   ],
