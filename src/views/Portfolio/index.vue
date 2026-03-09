@@ -155,9 +155,10 @@
 import { ref, onMounted, reactive } from "vue"
 import { useRouter } from "vue-router"
 import { getMyPortfolios, removePortfolio } from "@/services/portfolio"
+import { usePortfolioStore } from "@/stores/portfolioStore"
 
+const portfolioStore = usePortfolioStore()
 const router = useRouter()
-
 const portfolios = ref<any[]>([])
 const loading = ref(true)
 
@@ -168,15 +169,15 @@ const deleteDialog = reactive({
 })
 
 async function loadPortfolios() {
-    try {
-        const { data } = await getMyPortfolios()
-        portfolios.value = data.map((p: any) => ({
-            ...p,
-            menuOpen: false
-        }))
-    } finally {
-        loading.value = false
+    portfolioStore.loadFromSession()
+    if (!portfolioStore.portfolios.length) {
+        await portfolioStore.fetchPortfolios()
     }
+    portfolios.value = portfolioStore.portfolios.map((p: any) => ({
+        ...p,
+        menuOpen: false
+    }))
+    loading.value = false
 }
 
 function viewPortfolio(id: number) {
@@ -201,7 +202,11 @@ function confirmDelete(id: number) {
 async function executeDelete() {
     if (deleteDialog.portfolioId) {
         await removePortfolio(deleteDialog.portfolioId)
-        portfolios.value = portfolios.value.filter(p => p.id !== deleteDialog.portfolioId)
+
+        portfolioStore.removePortfolio(deleteDialog.portfolioId)
+        portfolios.value = portfolios.value.filter(
+            p => p.id !== deleteDialog.portfolioId
+        )
         deleteDialog.show = false
     }
 }
