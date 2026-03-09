@@ -181,7 +181,7 @@ async function loadPortfolios() {
 }
 
 function viewPortfolio(id: number) {
-    router.push(`/portfolio/${id}`)
+    router.push(`/PortfolioDetails/${id}`)
 }
 
 function editPortfolio(id: number) {
