@@ -155,9 +155,9 @@
 import { ref, onMounted, reactive } from "vue"
 import { useRouter } from "vue-router"
 import { getMyPortfolios, removePortfolio } from "@/services/portfolio"
-import { usePortfolioStore } from "@/stores/portfoliosStore"
+import { usePortfoliosStore } from "@/stores/portfoliosStore"
 
-const portfolioStore = usePortfolioStore()
+const portfolioStore = usePortfoliosStore()
 const router = useRouter()
 const portfolios = ref<any[]>([])
 const loading = ref(true)

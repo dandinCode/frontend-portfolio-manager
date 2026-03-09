@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { getMyPortfolios } from '@/services/portfolio'
 
-export const usePortfolioStore = defineStore('portfolio', {
+export const usePortfoliosStore = defineStore('portfolio', {
   state: () => ({
     portfolios: [] as any[],
     loaded: false,
