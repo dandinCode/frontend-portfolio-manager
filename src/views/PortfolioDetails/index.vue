@@ -52,30 +52,39 @@
                 <v-table>
                     <thead>
                         <tr>
-                            <th>Ação</th>
-                            <th>Peso</th>
-                            <th>Retorno Esperado</th>
-                            <th>Risco</th>
+                            <th>ID</th>
+                            <th>Empresa</th>
+                            <th>Setor</th>
+                            <th>Dividend Yield</th>
+                            <th>Volatilidade</th>
+                            <th>Última atualização</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="stock in portfolio.portfolioStocks" :key="stock.id">
+                        <tr v-for="item in portfolio.portfolioStocks" :key="item.id">
                             <td>
-                                {{ stock.stock?.ticker || stock.stockId }}
+                                {{ item.stock.id }}
                             </td>
                             <td>
-                                {{ (stock.weight * 100).toFixed(2) }}%
+                                {{ item.stock.companyName }}
                             </td>
                             <td>
-                                {{ stock.stock?.expectedReturn?.toFixed(2) || '-' }}%
+                                {{ item.stock.sector }}
                             </td>
                             <td>
-                                {{ (stock.stock?.risk)?.toFixed(2) || '-' }}%
+                                {{ item.stock.dividendYield }}%
+                            </td>
+                            <td>
+                                {{ (item.stock.volatility).toFixed(2) }}%
+                            </td>
+                            <td>
+                                {{ formatDate(item.stock.lastFetchedAt) }}
                             </td>
                         </tr>
                     </tbody>
                 </v-table>
             </v-card>
+
         </div>
         <v-alert v-else type="error">
             Portfólio não encontrado
@@ -87,7 +96,7 @@
 
 import { useRoute, useRouter } from "vue-router"
 import { usePortfoliosStore } from "@/stores/portfoliosStore"
-import { computed } from "vue"
+import { computed, onMounted } from "vue"
 
 const route = useRoute()
 const router = useRouter()
@@ -97,7 +106,9 @@ const store = usePortfoliosStore()
 const portfolio = computed(() =>
     store.getPortfolio(Number(route.params.id))
 )
-
+onMounted(() => {
+    console.log(store.getPortfolio(Number(route.params.id)))
+})
 function formatDate(date: string) {
     return new Date(date).toLocaleDateString("pt-BR")
 }
@@ -179,16 +190,33 @@ function formatDate(date: string) {
     color: #f97316;
 }
 
-.stocks-card {
+.stock-card {
 
-    border-radius: 16px;
+    padding: 20px;
 
     background: linear-gradient(145deg,
             #1e293b,
             #020617);
 
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.05);
 
     color: white;
+
+    transition: .25s;
+}
+
+.stock-card:hover {
+
+    transform: translateY(-4px);
+
+    border: 1px solid rgba(99, 102, 241, .5);
+}
+
+.stock-header h3 {
+
+    font-size: 18px;
+    font-weight: 600;
 }
 </style>
