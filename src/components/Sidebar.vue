@@ -84,7 +84,7 @@ const menu = [
     {
         title: "Meus Portfólios",
         icon: "mdi-briefcase-outline",
-        to: "/portfolio",
+        to: "/PortfolioList",
     },
     {
         title: 'Analisar Ações',
