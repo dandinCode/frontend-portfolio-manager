@@ -254,7 +254,6 @@ onMounted(loadPortfolios)
     padding: 20px;
 }
 
-/* Glass Panel */
 .glass-panel {
     background: rgba(15, 23, 42, 0.7) !important;
     backdrop-filter: blur(10px);
@@ -308,7 +307,6 @@ onMounted(loadPortfolios)
     box-shadow: 0 12px 24px rgba(108, 99, 255, 0.3);
 }
 
-/* Loading State */
 .loading-state {
     display: flex;
     flex-direction: column;
@@ -323,7 +321,6 @@ onMounted(loadPortfolios)
     font-size: 16px;
 }
 
-/* Cards */
 .portfolio-card {
     background: rgba(15, 23, 42, 0.6) !important;
     backdrop-filter: blur(10px);
@@ -343,7 +340,6 @@ onMounted(loadPortfolios)
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Badge */
 .card-badge {
     position: absolute;
     top: 16px;
@@ -374,12 +370,10 @@ onMounted(loadPortfolios)
     color: #ffc107;
 }
 
-/* Card Icon */
 .card-icon {
     margin-bottom: 16px;
 }
 
-/* Card Title */
 .card-title {
     font-size: 20px;
     font-weight: 700;
@@ -396,7 +390,6 @@ onMounted(loadPortfolios)
     gap: 4px;
 }
 
-/* Metrics */
 .card-content {
     padding: 16px 0 0 !important;
 }
@@ -441,7 +434,6 @@ onMounted(loadPortfolios)
     color: #ff7043 !important;
 }
 
-/* Performance Chart */
 .performance-chart {
     height: 4px;
     background: rgba(255, 255, 255, 0.1);
@@ -457,7 +449,6 @@ onMounted(loadPortfolios)
     transition: width 0.3s ease;
 }
 
-/* Card Actions */
 .card-divider {
     background: rgba(255, 255, 255, 0.05);
     margin: 16px 0 8px;
@@ -476,7 +467,6 @@ onMounted(loadPortfolios)
     background: rgba(244, 67, 54, 0.1) !important;
 }
 
-/* Create Card */
 .create-card {
     background: rgba(15, 23, 42, 0.4) !important;
     border: 2px dashed rgba(108, 99, 255, 0.3);
@@ -513,7 +503,6 @@ onMounted(loadPortfolios)
     margin: 0;
 }
 
-/* Empty State */
 .empty-state {
     background: rgba(15, 23, 42, 0.6) !important;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -534,7 +523,6 @@ onMounted(loadPortfolios)
     margin-bottom: 24px;
 }
 
-/* Delete Dialog */
 .delete-dialog {
     background: #1e293b !important;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -548,7 +536,6 @@ onMounted(loadPortfolios)
     color: #9aa4bf;
 }
 
-/* Responsividade */
 @media (max-width: 600px) {
     .header {
         flex-direction: column;
