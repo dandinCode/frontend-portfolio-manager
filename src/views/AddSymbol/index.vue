@@ -16,7 +16,6 @@
         </div>
 
         <v-card-text class="card-content">
-          <!-- Campo de input estilizado -->
           <div class="input-wrapper">
             <v-text-field
               v-model="symbol"
@@ -48,7 +47,6 @@
               </template>
             </v-text-field>
 
-            <!-- Exemplos em chips -->
             <div class="examples mt-2">
               <span class="examples-label">Exemplos:</span>
               <v-chip
@@ -65,7 +63,6 @@
             </div>
           </div>
 
-          <!-- Informações adicionais -->
           <v-expand-transition>
             <v-alert
               v-if="symbol && !symbolError"
@@ -79,8 +76,6 @@
               </div>
             </v-alert>
           </v-expand-transition>
-
-          <!-- Estatísticas (mock) -->
           <div class="stats-section mt-6">
             <div class="stat-item">
               <span class="stat-value">{{ totalSymbols }}</span>
@@ -110,7 +105,6 @@
           </v-btn>
         </v-card-actions>
 
-        <!-- Footer com dicas -->
         <div class="card-footer">
           <p class="text-caption text-grey">
             <v-icon size="14" color="#ffd700" class="mr-1">mdi-lightbulb-outline</v-icon>
@@ -120,7 +114,6 @@
       </v-card>
     </v-container>
 
-    <!-- Toast customizado -->
     <v-snackbar
       v-model="showToast"
       :color="toastColor"
