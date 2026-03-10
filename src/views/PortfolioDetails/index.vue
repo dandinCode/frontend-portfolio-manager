@@ -2,7 +2,6 @@
     <div class="run-model-bg py-4">
         <v-container class="portfolio-page">
             <div v-if="portfolio">
-                <!-- Header com glassmorphism -->
                 <div class="header glass-panel">
                     <div>
                         <div class="back-nav">
@@ -19,8 +18,6 @@
                         </p>
                     </div>
                 </div>
-
-                <!-- Cards de métricas com glow effect -->
                 <v-row class="metrics">
                     <v-col cols="12" md="4">
                         <v-card class="metric-card glow-card">
@@ -36,7 +33,6 @@
                             </div>
                         </v-card>
                     </v-col>
-
                     <v-col cols="12" md="4">
                         <v-card class="metric-card glow-card">
                             <div class="metric-icon warning">
@@ -50,7 +46,6 @@
                             </div>
                         </v-card>
                     </v-col>
-
                     <v-col cols="12" md="4">
                         <v-card class="metric-card glow-card">
                             <div class="metric-icon info">
@@ -65,16 +60,12 @@
                         </v-card>
                     </v-col>
                 </v-row>
-
-                <!-- Tabela de ativos com design melhorado -->
                 <v-card class="stocks-card glow-card">
                     <v-card-title class="d-flex align-center">
                         <v-icon start color="amber-lighten-2" class="mr-2">mdi-format-list-bulleted</v-icon>
                         Ativos do Portfólio
                     </v-card-title>
-
                     <v-divider class="mx-4" :style="{ borderColor: 'rgba(255, 215, 0, 0.1)' }" />
-
                     <v-table class="stocks-table">
                         <thead>
                             <tr>
@@ -124,23 +115,16 @@
                             </tr>
                         </tbody>
                     </v-table>
-
-                    <!-- Empty state -->
                     <v-card-text v-if="!portfolio.portfolioStocks?.length" class="text-center">
                         <v-icon size="48" color="grey-darken-1" class="mb-3">mdi-package-variant</v-icon>
                         <p class="text-grey">Nenhum ativo encontrado neste portfólio</p>
                     </v-card-text>
                 </v-card>
-
             </div>
-
-            <!-- Loading state -->
             <div v-else-if="!portfolio" class="loading-state">
                 <v-progress-circular indeterminate size="60" color="amber-lighten-2" />
                 <p class="text-grey mt-4">Carregando portfólio...</p>
             </div>
-
-            <!-- Error state -->
             <v-alert v-else type="error" variant="tonal" class="error-alert">
                 <v-icon start>mdi-alert-circle</v-icon>
                 Portfólio não encontrado
@@ -204,7 +188,6 @@ function getVolatilityClass(volatility: number) {
     margin: 0 auto;
 }
 
-/* Glass panel effect */
 .glass-panel {
     background: rgba(10, 8, 3, 0.7) !important;
     backdrop-filter: blur(10px);
@@ -215,7 +198,6 @@ function getVolatilityClass(volatility: number) {
     margin-bottom: 40px;
 }
 
-/* Header styles */
 .back-nav {
     margin-bottom: 16px;
 }
@@ -246,7 +228,6 @@ function getVolatilityClass(volatility: number) {
     font-size: 14px;
 }
 
-/* Metrics cards */
 .metrics {
     margin-bottom: 30px;
 }
@@ -347,7 +328,6 @@ function getVolatilityClass(volatility: number) {
     color: #f59e0b !important;
 }
 
-/* Stocks card */
 .stocks-card {
     background: rgba(10, 8, 3, 0.8) !important;
     backdrop-filter: blur(10px);
@@ -362,7 +342,6 @@ function getVolatilityClass(volatility: number) {
     padding: 20px 24px;
 }
 
-/* Table styles */
 .stocks-table {
     background: transparent !important;
     color: white;
@@ -428,7 +407,6 @@ function getVolatilityClass(volatility: number) {
     color: #b0a580 !important;
 }
 
-/* Loading state */
 .loading-state {
     display: flex;
     flex-direction: column;
@@ -437,7 +415,6 @@ function getVolatilityClass(volatility: number) {
     min-height: 400px;
 }
 
-/* Error alert */
 .error-alert {
     background: rgba(239, 68, 68, 0.1) !important;
     border: 1px solid rgba(239, 68, 68, 0.2);
@@ -445,7 +422,6 @@ function getVolatilityClass(volatility: number) {
     color: white;
 }
 
-/* Responsividade */
 @media (max-width: 600px) {
     .portfolio-page {
         padding: 20px 10px;
