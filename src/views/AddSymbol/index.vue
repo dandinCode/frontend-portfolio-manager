@@ -6,9 +6,6 @@
       <v-text-field v-model="symbol" label="Símbolo da Ação (ex: PETR4)" :error="symbolError"
         error-message="Formato inválido" variant="outlined" />
 
-      <v-text-field v-model="createdById" label="ID do Usuário" type="number" variant="outlined" density="comfortable"
-        prepend-inner-icon="mdi-account" />
-
       <v-btn class="mt-4" color="primary" block :loading="loading" @click="handleSubmit">
         Registrar Símbolo
       </v-btn>
@@ -24,7 +21,6 @@ import { isValidStockSymbol } from '@/utils/validators';
 import { computed } from 'vue';
 
 const symbol = ref("");
-const createdById = ref<number | null>(null);
 const loading = ref(false);
 
 const symbolError = computed(() =>
@@ -35,7 +31,7 @@ async function handleSubmit() {
   loading.value = true;
 
   try {
-    if (!symbol.value || !createdById.value) {
+    if (!symbol.value) {
       notify.error('Preencha todos os campos.');
       return;
     }
@@ -49,11 +45,10 @@ async function handleSubmit() {
       return;
     }
 
-    await createStock(normalizedSymbol, createdById.value);
+    await createStock(normalizedSymbol);
 
     notify.success('Símbolo registrado com sucesso!');
     symbol.value = '';
-    createdById.value = null;
   } catch (error: any) {
     if (error?.response?.status === 409) {
       notify.error('Símbolo já existe!');

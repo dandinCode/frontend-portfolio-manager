@@ -2,11 +2,10 @@ import type { AxiosResponse } from 'axios';
 import { api } from './http/api';
 import type { Stock, StockSymbol } from '../types/types';
 
-export async function createStock(symbol: string, createdById: number) {
+export async function createStock(symbol: string) {
   try {
     const res: AxiosResponse<Stock> = await api.post('/stocks/symbol', {
       symbol,
-      createdById,
     });
     return res.data;
   } catch (error) {
