@@ -106,9 +106,7 @@ const store = usePortfoliosStore()
 const portfolio = computed(() =>
     store.getPortfolio(Number(route.params.id))
 )
-onMounted(() => {
-    console.log(store.getPortfolio(Number(route.params.id)))
-})
+
 function formatDate(date: string) {
     return new Date(date).toLocaleDateString("pt-BR")
 }
