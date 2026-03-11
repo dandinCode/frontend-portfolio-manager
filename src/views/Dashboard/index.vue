@@ -217,10 +217,18 @@ const store = usePortfoliosStore()
 const portfolios = computed(() => store.portfolios)
 
 const recentPortfolios = computed(() => {
+    store.loadFromSession()
+    if (!store.portfolios.length) {
+        loadPortfolios()
+    }
     return [...portfolios.value]
         .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
         .slice(0, 3)
 })
+
+async function loadPortfolios() {
+    await store.fetchPortfolios()
+}
 
 const avgReturn = computed(() => {
     if (!portfolios.value.length) return 0
