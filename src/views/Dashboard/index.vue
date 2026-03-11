@@ -300,14 +300,6 @@ const quickActions = [
         route: '/RunModel'
     },
     {
-        title: 'Ver Portfólios',
-        description: 'Gerencie seus portfólios de investimento',
-        icon: 'mdi-briefcase',
-        bgColor: 'rgba(34, 197, 94, 0.1)',
-        iconColor: '#22c55e',
-        route: '/PortfolioList'
-    },
-    {
         title: 'Adicionar Ativo',
         description: 'Cadastre novos símbolos na base de dados',
         icon: 'mdi-plus-circle',
