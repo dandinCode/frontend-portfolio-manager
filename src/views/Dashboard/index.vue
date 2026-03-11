@@ -293,7 +293,7 @@ const metrics = computed(() => [
 const quickActions = [
     {
         title: 'Analisar Ações',
-        description: 'Explore novos ativos e veja volatilidade e dividendos',
+        description: 'Use o modelo de otimização para criar carteiras',
         icon: 'mdi-chart-line',
         bgColor: 'rgba(255, 215, 0, 0.1)',
         iconColor: '#ffd700',
