@@ -74,7 +74,7 @@ const menu = [
     {
         title: 'Dashboard',
         icon: 'mdi-view-dashboard-outline',
-        to: '/'
+        to: '/Dashboard'
     },
     {
         title: 'Adicionar Ativo',

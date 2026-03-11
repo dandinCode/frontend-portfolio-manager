@@ -55,7 +55,7 @@ async function handleLogin() {
     try {
         await userStore.login(email.value, password.value);
         notify.success('Login realizado com sucesso!');
-        router.push('/');
+        router.push('/Dashboard');
     } catch (error: any) {
         notify.error(
             error?.response?.data?.message || 'Erro ao logar na conta'
