@@ -1,8 +1,6 @@
 <template>
     <div class="dashboard-bg">
         <v-container class="dashboard">
-
-            <!-- HEADER COM GLASSMORPHISM -->
             <div class="header glass-panel">
                 <div>
                     <div class="welcome-badge">
@@ -12,7 +10,6 @@
                     <h1 class="title gradient-text">Bem-vindo de volta</h1>
                     <p class="subtitle">Acompanhe seus investimentos e desempenho em tempo real</p>
                 </div>
-
                 <v-btn class="create-btn" @click="router.push('/PortfolioList')">
                     <template #prepend>
                         <v-icon size="18">mdi-briefcase-outline</v-icon>
@@ -21,7 +18,6 @@
                 </v-btn>
             </div>
 
-            <!-- MÉTRICAS PRINCIPAIS -->
             <v-row class="mt-6">
                 <v-col cols="12" md="3" v-for="(metric, index) in metrics" :key="index">
                     <v-card class="metric-card glow-card" @click="metric.action ? router.push(metric.action) : null">
@@ -44,7 +40,6 @@
                 </v-col>
             </v-row>
 
-            <!-- GRÁFICO DE PERFORMANCE (placeholder) -->
             <v-row class="mt-8">
                 <v-col cols="12" md="8">
                     <v-card class="chart-card glow-card">
@@ -62,7 +57,6 @@
                                 </v-chip>
                             </template>
                         </v-card-item>
-
                         <v-card-text>
                             <div class="chart-placeholder">
                                 <div class="placeholder-content">
@@ -74,7 +68,6 @@
                     </v-card>
                 </v-col>
 
-                <!-- DISTRIBUIÇÃO POR SETOR -->
                 <v-col cols="12" md="4">
                     <v-card class="sector-card glow-card">
                         <v-card-item>
@@ -104,7 +97,6 @@
                 </v-col>
             </v-row>
 
-            <!-- AÇÕES RÁPIDAS -->
             <v-row class="mt-8">
                 <v-col cols="12">
                     <h2 class="section-title">Ações Rápidas</h2>
@@ -125,7 +117,6 @@
                 </v-col>
             </v-row>
 
-            <!-- ÚLTIMOS PORTFÓLIOS -->
             <v-row class="mt-8">
                 <v-col cols="12">
                     <div class="section-header">
@@ -225,14 +216,12 @@ const store = usePortfoliosStore()
 
 const portfolios = computed(() => store.portfolios)
 
-// Últimos 3 portfólios
 const recentPortfolios = computed(() => {
     return [...portfolios.value]
         .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
         .slice(0, 3)
 })
 
-// Métricas calculadas
 const avgReturn = computed(() => {
     if (!portfolios.value.length) return 0
     const total = portfolios.value.reduce((sum, p) => sum + (p.totalReturn || 0), 0)
@@ -256,7 +245,6 @@ const totalAssets = computed(() => {
     return portfolios.value.reduce((sum, p) => sum + (p.portfolioStocks?.length || 0), 0)
 })
 
-// Cards de métricas
 const metrics = computed(() => [
     {
         title: 'Portfólios',
@@ -302,7 +290,6 @@ const metrics = computed(() => [
     }
 ])
 
-// Ações rápidas
 const quickActions = [
     {
         title: 'Analisar Ações',
@@ -330,7 +317,6 @@ const quickActions = [
     }
 ]
 
-// Distribuição setorial (mock - você pode calcular dos portfólios)
 const sectorDistribution = [
     { name: 'Financeiro', percentage: 35, count: 8, color: '#ffd700' },
     { name: 'Energia', percentage: 25, count: 5, color: '#22c55e' },
@@ -375,7 +361,6 @@ function formatDate(date: string) {
     z-index: 1;
 }
 
-/* Glass Panel */
 .glass-panel {
     background: rgba(10, 8, 3, 0.7) !important;
     backdrop-filter: blur(10px);
@@ -385,7 +370,6 @@ function formatDate(date: string) {
     padding: 24px 32px;
 }
 
-/* Header */
 .header {
     display: flex;
     justify-content: space-between;
@@ -437,7 +421,6 @@ function formatDate(date: string) {
     box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
 }
 
-/* Metric Cards */
 .metric-card {
     padding: 24px !important;
     background: rgba(10, 8, 3, 0.8) !important;
@@ -530,7 +513,6 @@ function formatDate(date: string) {
     color: #f59e0b !important;
 }
 
-/* Chart Card */
 .chart-card {
     background: rgba(10, 8, 3, 0.8) !important;
     backdrop-filter: blur(10px);
@@ -557,7 +539,6 @@ function formatDate(date: string) {
     margin-top: 12px;
 }
 
-/* Sector Card */
 .sector-card {
     background: rgba(10, 8, 3, 0.8) !important;
     backdrop-filter: blur(10px);
@@ -612,7 +593,6 @@ function formatDate(date: string) {
     font-size: 12px;
 }
 
-/* Action Cards */
 .action-card {
     padding: 32px !important;
     background: rgba(10, 8, 3, 0.8) !important;
@@ -657,7 +637,6 @@ function formatDate(date: string) {
     font-weight: 500;
 }
 
-/* Section Header */
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -671,7 +650,6 @@ function formatDate(date: string) {
     font-weight: 600;
 }
 
-/* Portfolio Cards */
 .portfolio-card {
     padding: 24px !important;
     background: rgba(10, 8, 3, 0.8) !important;
@@ -757,7 +735,6 @@ function formatDate(date: string) {
     align-items: center;
 }
 
-/* Empty Card */
 .empty-card {
     padding: 40px !important;
     background: rgba(10, 8, 3, 0.8) !important;
@@ -789,7 +766,6 @@ function formatDate(date: string) {
     color: #b0a580;
 }
 
-/* Action Menu */
 .action-menu {
     background: #1a1508 !important;
     border: 1px solid rgba(255, 215, 0, 0.1);
@@ -803,7 +779,6 @@ function formatDate(date: string) {
     background: rgba(255, 215, 0, 0.1) !important;
 }
 
-/* Responsividade */
 @media (max-width: 960px) {
     .header {
         flex-direction: column;
