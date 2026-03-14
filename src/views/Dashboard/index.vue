@@ -330,7 +330,7 @@ const sectorDistribution = [
 ]
 
 function openPortfolio(id: number) {
-    router.push(`/portfolio/${id}`)
+    router.push(`/PortfolioDetails/${id}`)
 }
 
 function formatDate(date: string) {
