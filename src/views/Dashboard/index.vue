@@ -5,7 +5,7 @@
                 <div>
                     <div class="welcome-badge">
                         <v-icon size="18" color="#ffd700" class="mr-1">mdi-hand-wave</v-icon>
-                        <span>Olá, João</span>
+                        <span>Olá, {{ firstName }}</span>
                     </div>
                     <h1 class="title gradient-text">Bem-vindo de volta</h1>
                     <p class="subtitle">Acompanhe seus investimentos e desempenho em tempo real</p>
@@ -210,11 +210,13 @@
 import { computed } from "vue"
 import { useRouter } from "vue-router"
 import { usePortfoliosStore } from "@/stores/portfoliosStore"
+import { getUserFirstName } from "@/utils/user"
 
 const router = useRouter()
 const store = usePortfoliosStore()
 
 const portfolios = computed(() => store.portfolios)
+const firstName = getUserFirstName()
 
 const recentPortfolios = computed(() => {
     store.loadFromSession()
