@@ -250,12 +250,12 @@ const bestPortfolio = computed(() => {
 })
 
 const totalAssets = computed(() => {
-  const unique = new Set(
-    portfolios.value.flatMap(p =>
-      p.portfolioStocks?.map((s: any) => s.stock?.symbol?.symbol)
+    const unique = new Set(
+        portfolios.value.flatMap(p =>
+            p.portfolioStocks?.map((s: any) => s.stock?.symbol?.symbol)
+        )
     )
-  )
-  return unique.size
+    return unique.size
 })
 
 const metrics = computed(() => [
@@ -322,12 +322,35 @@ const quickActions = [
     }
 ]
 
-const sectorDistribution = [
-    { name: 'Financeiro', percentage: 35, count: 8, color: '#ffd700' },
-    { name: 'Energia', percentage: 25, count: 5, color: '#22c55e' },
-    { name: 'Tecnologia', percentage: 20, count: 4, color: '#3b82f6' },
-    { name: 'Consumo', percentage: 20, count: 4, color: '#f59e0b' }
-]
+function generateColor(index: number, total: number) {
+
+    const hue = Math.round((360 / total) * index)
+
+    return `hsl(${hue}, 70%, 55%)`
+}
+
+const sectorDistribution = computed(() => {
+    const sectorMap: Record<string, number> = {}
+
+    portfolios.value.forEach(portfolio => {
+        if (!portfolio.portfolioStocks) return
+        portfolio.portfolioStocks.forEach((ps: any) => {
+            const sector = ps.stock?.sector ?? "Outros"
+            sectorMap[sector] = (sectorMap[sector] || 0) + 1
+        })
+    })
+
+    const total = Object.values(sectorMap).reduce((a, b) => a + b, 0)
+
+    const entries = Object.entries(sectorMap)
+
+    return entries.map(([name, count], index) => ({
+        name,
+        count,
+        percentage: Number(((count / total) * 100).toFixed(1)),
+        color: generateColor(index, entries.length)
+    }))
+})
 
 function openPortfolio(id: number) {
     router.push(`/PortfolioDetails/${id}`)
