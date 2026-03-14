@@ -27,7 +27,7 @@
                 </template>
 
                 <v-list-item-title v-if="!collapsed">
-                    João Silva
+                    {{ firstName }}
                 </v-list-item-title>
 
                 <template #append>
@@ -64,11 +64,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { getUserFirstName } from "@/utils/user"
 
 const router = useRouter()
 
 const drawer = ref(true)
 const collapsed = ref(false)
+const firstName = getUserFirstName()
 
 const menu = [
     {
