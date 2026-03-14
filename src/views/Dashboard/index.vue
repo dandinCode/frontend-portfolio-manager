@@ -174,7 +174,7 @@
                             <div class="portfolio-metric">
                                 <span class="metric-label">Risco</span>
                                 <span class="metric-value-small orange">
-                                    {{ (portfolio.totalRisk * 100)?.toFixed(2) }}%
+                                    {{ portfolio.totalRisk?.toFixed(2) }}%
                                 </span>
                             </div>
                         </div>
@@ -239,7 +239,7 @@ const avgReturn = computed(() => {
 const avgRisk = computed(() => {
     if (!portfolios.value.length) return 0
     const total = portfolios.value.reduce((sum, p) => sum + (p.totalRisk || 0), 0)
-    return ((total / portfolios.value.length) * 100).toFixed(2)
+    return (total / portfolios.value.length).toFixed(2)
 })
 
 const bestPortfolio = computed(() => {
