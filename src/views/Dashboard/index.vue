@@ -250,7 +250,12 @@ const bestPortfolio = computed(() => {
 })
 
 const totalAssets = computed(() => {
-    return portfolios.value.reduce((sum, p) => sum + (p.portfolioStocks?.length || 0), 0)
+  const unique = new Set(
+    portfolios.value.flatMap(p =>
+      p.portfolioStocks?.map((s: any) => s.stock?.symbol?.symbol)
+    )
+  )
+  return unique.size
 })
 
 const metrics = computed(() => [
