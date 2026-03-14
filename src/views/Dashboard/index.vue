@@ -323,9 +323,7 @@ const quickActions = [
 ]
 
 function generateColor(index: number, total: number) {
-
     const hue = Math.round((360 / total) * index)
-
     return `hsl(${hue}, 70%, 55%)`
 }
 
