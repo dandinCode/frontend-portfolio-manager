@@ -1,7 +1,9 @@
 <template>
     <v-navigation-drawer v-model="drawer" :rail="collapsed" permanent color="#0f172a">
         <div class="logo">
-            <v-icon size="28">mdi-finance</v-icon>
+            <v-icon size="40">
+                <v-img :src="logo" width="40" height="40" />
+            </v-icon>
             <span v-if="!collapsed">Talos</span>
         </div>
         <v-divider />
@@ -65,6 +67,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { getUserFirstName } from "@/utils/user"
+import logo from '@/assets/talos_logo.png'
 
 const router = useRouter()
 
