@@ -23,8 +23,8 @@
             <v-divider />
             <v-list-item class="profile">
                 <template #prepend>
-                    <v-avatar size="32">
-                        <v-img src="https://i.pravatar.cc/40" />
+                    <v-avatar size="32" class="avatar-initials">
+                        {{ initials }}
                     </v-avatar>
                 </template>
 
@@ -66,7 +66,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { getUserFirstName } from "@/utils/user"
+import { getUserFirstName, getUserInitials } from "@/utils/user"
 import logo from '@/assets/talos_logo.png'
 
 const router = useRouter()
@@ -74,6 +74,7 @@ const router = useRouter()
 const drawer = ref(true)
 const collapsed = ref(false)
 const firstName = getUserFirstName()
+const initials = getUserInitials()
 
 const menu = [
     {
@@ -127,5 +128,15 @@ function logout() {
     display: flex;
     justify-content: center;
     padding: 10px;
+}
+
+.avatar-initials {
+  background: #1e293b;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
