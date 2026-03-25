@@ -2,7 +2,7 @@
     <v-navigation-drawer v-model="drawer" :rail="collapsed" permanent color="#0f172a">
         <div class="logo">
             <v-icon size="28">mdi-finance</v-icon>
-            <span v-if="!collapsed">Portfolio</span>
+            <span v-if="!collapsed">Talos</span>
         </div>
         <v-divider />
         <v-list nav density="compact">
