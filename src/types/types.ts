@@ -35,3 +35,9 @@ export interface SavePortfolioPayload {
     percentage: number
   }[]
 }
+
+export interface UserFromToken {
+  name?: string
+  email?: string
+  sub?: number
+}

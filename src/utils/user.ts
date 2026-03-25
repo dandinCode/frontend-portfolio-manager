@@ -1,30 +1,50 @@
+import type { UserFromToken } from "@/types/types"
+
 export function getUserFirstName(): string {
-  const token = localStorage.getItem('token')
+  const user = getUserFromToken()
 
-  if (!token) return ''
+  if (!user?.name) return ''
 
-  try {
-    const base64Payload = token.split('.')[1]
+  const firstName = user.name.split(' ')[0] || ''
 
-    if (!base64Payload) return ''
-
-    const payload = JSON.parse(atob(base64Payload))
-    console.log(payload)
-
-    const name: string = payload.name || ''
-
-    if (!name) return ''
-
-    const firstName = name.split(' ')[0] || ''
-
-    return capitalize(firstName)
-  } catch {
-    return ''
-  }
+  return capitalize(firstName)
 }
 
 function capitalize(text: string) {
   if (!text) return ''
 
   return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase()
+}
+
+export function getUserFromToken(): UserFromToken | null {
+  const token = localStorage.getItem('token')
+
+  if (!token) return null
+
+  try {
+    const base64Payload = token.split('.')[1]
+    if (!base64Payload) return null
+
+    const payload = JSON.parse(atob(base64Payload))
+
+    return payload
+  } catch {
+    return null
+  }
+}
+
+export function getUserInitials(): string {
+  const user = getUserFromToken()
+
+  if (!user?.name) return ''
+
+  const parts = user.name.trim().split(' ').filter(Boolean)
+
+  if (parts.length === 0) return ''
+
+  if (parts.length === 1) {
+    return (parts[0]?.[0] || '').toUpperCase()
+  }
+
+  return ((parts[0]?.[0] || '') + (parts[parts.length - 1]?.[0] || '')).toUpperCase()
 }
