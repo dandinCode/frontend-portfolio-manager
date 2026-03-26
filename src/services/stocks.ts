@@ -1,6 +1,6 @@
 import type { AxiosResponse } from 'axios';
 import { api } from './http/api';
-import type { Stock, StockSymbol } from '../types/types';
+import type { Stock, StocksSummary, StockSymbol } from '../types/types';
 
 export async function createStock(symbol: string) {
   try {
@@ -21,5 +21,15 @@ export async function getStockSymbols(): Promise<StockSymbol[]> {
   } catch (error) {
     console.error('Erro ao buscar stock symbols:', error);
     return [];
+  }
+}
+
+export async function getStocksSummary(): Promise<StocksSummary | null> {
+  try {
+    const res = await api.get<StocksSummary>('/stocks/summary')
+    return res.data
+  } catch (error) {
+    console.error('Erro ao buscar summary:', error)
+    return null
   }
 }
