@@ -41,3 +41,8 @@ export interface UserFromToken {
   email?: string
   sub?: number
 }
+
+export interface StocksSummary {
+  totalAssets: number
+  lastUpdate: string | null
+}
