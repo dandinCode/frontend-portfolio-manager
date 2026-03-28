@@ -1,11 +1,9 @@
 <template>
     <div class="home-container">
-        <!-- HERO SECTION -->
         <section class="hero-section">
             <v-container fluid class="hero-content">
                 <v-row class="fill-height align-center justify-center text-center">
                     <v-col cols="12" md="10" lg="8">
-                        <!-- Logo e Nome -->
                         <div class="logo-wrapper">
                             <img src="@/assets/talos_logo.png" alt="Talos" class="hero-logo" />
                             <h1 class="hero-title">
@@ -32,7 +30,6 @@
             </v-container>
         </section>
 
-        <!-- O QUE É O PROJETO -->
         <section class="section about-section">
             <v-container>
                 <v-row>
@@ -83,7 +80,6 @@
             </v-container>
         </section>
 
-        <!-- COMO FUNCIONA -->
         <section class="section how-section">
             <v-container>
                 <div class="section-header-center">
@@ -103,7 +99,6 @@
             </v-container>
         </section>
 
-        <!-- PROBLEMAS QUE RESOLVE -->
         <section class="section problems-section">
             <v-container>
                 <div class="section-header-center">
@@ -127,7 +122,6 @@
             </v-container>
         </section>
 
-        <!-- O QUE NÃO É -->
         <section class="section disclaimer-section">
             <v-container>
                 <div class="disclaimer-card">
@@ -148,7 +142,6 @@
             </v-container>
         </section>
 
-        <!-- POR QUE TALOS? -->
         <section class="section myth-section">
             <v-container>
                 <div class="myth-content">
@@ -178,7 +171,6 @@
             </v-container>
         </section>
 
-        <!-- VISÃO DE FUTURO -->
         <section class="section future-section">
             <v-container>
                 <div class="future-card">
@@ -196,7 +188,6 @@
             </v-container>
         </section>
 
-        <!-- FOOTER -->
         <footer class="footer-section">
             <v-container>
                 <div class="footer-content">
@@ -278,18 +269,15 @@ const disclaimer = [
 </script>
 
 <style scoped>
-/* ===== RESET GLOBAL PARA ESTA PÁGINA ===== */
 .home-container {
     background-color: #1C2D41;
     min-height: 100vh;
 }
 
-/* Força fundo escuro em todos os elementos */
 .home-container * {
     background-color: transparent;
 }
 
-/* ===== HERO SECTION ===== */
 .hero-section {
     min-height: 85vh;
     display: flex;
@@ -377,7 +365,6 @@ const disclaimer = [
     transform: translateY(-2px);
 }
 
-/* ===== SECTIONS GERAIS ===== */
 .section {
     padding: 80px 0;
     background-color: #1C2D41;
@@ -420,7 +407,6 @@ const disclaimer = [
     margin: 0 auto;
 }
 
-/* ===== ABOUT SECTION ===== */
 .about-section {
     background-color: #1C2D41;
 }
@@ -462,7 +448,6 @@ const disclaimer = [
     margin: 0;
 }
 
-/* ===== HOW SECTION ===== */
 .how-section {
     background-color: #14222f;
 }
@@ -510,7 +495,6 @@ const disclaimer = [
     font-size: 14px;
 }
 
-/* ===== PROBLEMS SECTION ===== */
 .problems-section {
     background-color: #1C2D41;
 }
@@ -553,7 +537,6 @@ const disclaimer = [
     line-height: 1.6;
 }
 
-/* ===== DISCLAIMER SECTION ===== */
 .disclaimer-section {
     background-color: #14222f;
 }
@@ -608,7 +591,6 @@ const disclaimer = [
     margin: 0;
 }
 
-/* ===== MYTH SECTION ===== */
 .myth-section {
     background-color: #1C2D41;
 }
@@ -653,7 +635,6 @@ const disclaimer = [
     justify-content: center;
 }
 
-/* ===== FUTURE SECTION ===== */
 .future-section {
     background-color: #14222f;
 }
@@ -687,7 +668,6 @@ const disclaimer = [
     color: rgba(255, 252, 239, 0.85);
 }
 
-/* ===== FOOTER ===== */
 .footer-section {
     background-color: #0f1a24;
     border-top: 1px solid rgba(185, 157, 117, 0.1);
@@ -747,7 +727,6 @@ const disclaimer = [
     margin: 0;
 }
 
-/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 960px) {
     .hero-title {
         font-size: 48px;
