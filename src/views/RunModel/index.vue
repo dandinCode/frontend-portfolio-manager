@@ -2,7 +2,6 @@
     <div class="run-model-bg">
         <v-container class="py-6">
             <v-sheet class="main-sheet" rounded="xl" elevation="0">
-                <!-- Header com gradiente -->
                 <div class="sheet-header">
                     <div class="header-icon">
                         <v-icon size="32" color="#B99D75">mdi-robot-outline</v-icon>
@@ -14,7 +13,6 @@
                     </div>
                 </div>
 
-                <!-- Alert Informativo -->
                 <v-alert class="info-alert" variant="tonal" density="comfortable" rounded="lg">
                     <div class="alert-content">
                         <div class="alert-header">
@@ -52,7 +50,6 @@
                     </div>
                 </v-alert>
 
-                <!-- Formulário de Configuração -->
                 <div class="form-section">
                     <div class="form-grid">
                         <div class="form-column">
@@ -64,7 +61,6 @@
                                 <DateRangeSelector />
                             </div>
                         </div>
-
                         <div class="form-column">
                             <div class="form-card">
                                 <div class="card-header">
@@ -77,7 +73,6 @@
                     </div>
                 </div>
 
-                <!-- Seleção de Ações -->
                 <div class="stocks-section">
                     <div class="section-header">
                         <div class="header-left">
@@ -95,10 +90,7 @@
                     </div>
                     <StockSelector />
                 </div>
-
                 <v-divider class="divider" />
-
-                <!-- Botão de Execução -->
                 <div class="action-section">
                     <v-btn class="run-btn" size="x-large" block :disabled="analysis.selectedSymbols.length === 0"
                         @click="runModel">
@@ -107,7 +99,6 @@
                         </template>
                         Rodar Modelo com {{ analysis.selectedSymbols.length }} ações
                     </v-btn>
-
                     <p v-if="analysis.selectedSymbols.length > 0 && analysis.selectedSymbols.length < 5"
                         class="warning-text">
                         <v-icon size="14" color="#f59e0b">mdi-alert</v-icon>
@@ -115,7 +106,6 @@
                     </p>
                 </div>
 
-                <!-- Resultado do Modelo -->
                 <ModelResult v-if="modelResult" :optimization="modelResult.optimization" />
             </v-sheet>
         </v-container>
@@ -182,7 +172,6 @@ async function runModel() {
     background: radial-gradient(circle at top, #1C2D41 0%, #0f1a24 100%);
 }
 
-/* Sheet Principal */
 .main-sheet {
     background: rgba(28, 45, 65, 0.85) !important;
     backdrop-filter: blur(10px);
@@ -191,7 +180,6 @@ async function runModel() {
     overflow: hidden;
 }
 
-/* Header */
 .sheet-header {
     display: flex;
     align-items: center;
@@ -224,7 +212,6 @@ async function runModel() {
     margin: 0;
 }
 
-/* Alert Informativo */
 .info-alert {
     margin: 24px 32px;
     background: rgba(185, 157, 117, 0.05) !important;
@@ -276,7 +263,6 @@ async function runModel() {
     color: #B99D75;
 }
 
-/* Formulário */
 .form-section {
     padding: 0 32px;
 }
@@ -308,7 +294,6 @@ async function runModel() {
     margin: 0;
 }
 
-/* Seção de Ações */
 .stocks-section {
     padding: 24px 32px;
 }
@@ -338,13 +323,11 @@ async function runModel() {
     color: #FFFCEF !important;
 }
 
-/* Divider */
 .divider {
     background: rgba(185, 157, 117, 0.15) !important;
     margin: 16px 32px;
 }
 
-/* Ação */
 .action-section {
     padding: 0 32px 32px;
 }
@@ -380,7 +363,6 @@ async function runModel() {
     font-size: 12px;
 }
 
-/* Responsividade */
 @media (max-width: 960px) {
     .form-grid {
         grid-template-columns: 1fr;
