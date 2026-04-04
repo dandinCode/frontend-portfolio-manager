@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { getUserFromToken, getUserInitials } from '@/utils/user'
+import { getUserFromToken, getUserInitials, decodeUTF8 } from '@/utils/user'
 import { notify } from '@/utils/toast'
 import { updateUser } from '@/services/user'
 
 const user = getUserFromToken()
 
-const name = ref(user?.name || '')
+const name = ref(decodeUTF8(user?.name || ''))
 const email = ref(user?.email || '')
 
 const initials = getUserInitials()
