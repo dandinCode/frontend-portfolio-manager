@@ -40,6 +40,7 @@ export interface UserFromToken {
   name?: string
   email?: string
   sub?: number
+  createdAt?: string
 }
 
 export interface StocksSummary {
