@@ -103,7 +103,7 @@ const menu = [
 ]
 
 function goProfile() {
-    router.push('/profile')
+    router.push('/ProfileView')
 }
 
 function logout() {
