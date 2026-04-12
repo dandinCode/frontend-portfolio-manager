@@ -1,6 +1,15 @@
-export function isTokenExpired(token: string): boolean {
+export function isTokenExpired(token?: string | null): boolean {
+  if (!token) return true
+
   try {
-    const payloadBase64 = token.split('.')[1]
+    const parts = token.split('.')
+
+    if (parts.length < 2) return true
+
+    const payloadBase64 = parts[1]
+
+    if (!payloadBase64) return true
+
     const payload = JSON.parse(atob(payloadBase64))
 
     if (!payload.exp) return true
