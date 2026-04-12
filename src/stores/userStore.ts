@@ -6,8 +6,9 @@ import { isTokenExpired } from '@/utils/jwt'
 export const useUserStore = defineStore('user', () => {
   const token = ref<string | null>(localStorage.getItem('token'))
   const loading = ref(false)
+  const currentToken = token.value
 
-  if (token.value && isTokenExpired(token.value)) {
+  if (currentToken && isTokenExpired(currentToken)) {
     token.value = null
     localStorage.removeItem('token')
   }
