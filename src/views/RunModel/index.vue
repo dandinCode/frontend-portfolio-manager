@@ -164,7 +164,6 @@ async function runModel() {
             notify.error(result.error ?? 'Falha ao otimizar a carteira.');
             return;
         }
-        console.log('Resultado otimizado:', result);
         modelResult.value = result;
         notify.success('Modelo executado com sucesso!');
     } catch (err) {
