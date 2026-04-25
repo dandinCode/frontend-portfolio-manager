@@ -32,11 +32,13 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { notify } from '@/utils/toast';
 import { isValidEmail, isValidName, isValidPassword } from '@/utils/validators';
 import { useUserStore } from '@/stores/userStore';
 import PasswordField from '@/components/PasswordField.vue';
 
+const router = useRouter();
 const userStore = useUserStore();
 
 const name = ref('');
@@ -71,6 +73,7 @@ async function handleRegister() {
     try {
         await userStore.register(name.value, email.value, password.value);
         notify.success('Conta criada com sucesso!');
+        router.push('/Dashboard');
     } catch (error: any) {
         notify.error(
             error?.response?.data?.message || 'Erro ao criar conta'
