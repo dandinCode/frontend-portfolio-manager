@@ -105,7 +105,7 @@ async function handleRegister() {
 }
 
 .glow {
-    text-shadow: 0 0 22px rgba(79, 140, 255, 0.7);
+    text-shadow: 0 0 22px rgba(185, 157, 117, 0.7);
 }
 
 .link {
@@ -118,9 +118,18 @@ async function handleRegister() {
     text-decoration: underline;
 }
 
-.register-card :deep(input) {
+.register-card :deep(.v-field) {
     background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.register-card :deep(input) {
+    background-color: transparent !important;
     color: #FFFCEF !important;
+}
+
+.register-card :deep(.v-field__prepend-inner),
+.register-card :deep(.v-field__append-inner) {
+    background-color: transparent !important;
 }
 
 .register-card :deep(input:-webkit-autofill),
@@ -129,5 +138,15 @@ async function handleRegister() {
 .register-card :deep(input:-webkit-autofill:active) {
     -webkit-box-shadow: 0 0 0 30px rgba(28, 45, 65, 0.95) inset !important;
     -webkit-text-fill-color: #FFFCEF !important;
+    caret-color: #FFFCEF !important;
+    background-color: transparent !important;
+}
+
+.register-card :deep(.v-field.v-field--focused) {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.register-card :deep(.v-field:hover) {
+    background-color: rgba(255, 255, 255, 0.06) !important;
 }
 </style>
