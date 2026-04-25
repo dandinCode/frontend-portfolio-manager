@@ -70,7 +70,7 @@ async function handleLogin() {
 .login-hero {
     width: 100vw;
     min-height: 100vh;
-    background: radial-gradient(circle at top, #1a237e, #0d1117);
+    background: radial-gradient(circle at top, #1C2D41 0%, #0f1a24 100%);
 }
 
 .login-card {
