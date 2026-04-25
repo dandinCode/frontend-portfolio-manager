@@ -1,5 +1,5 @@
 <template>
-    <v-row class="mt-4">
+    <v-row class="text-white mt-4">
         <v-col cols="12" md="6">
             <v-tooltip text="Opcional: se deixar vazio, o modelo irá usar a média dos riscos (desvio padrão)">
                 <template #activator="{ props }">
