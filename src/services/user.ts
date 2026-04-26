@@ -34,3 +34,7 @@ export async function checkAuth() {
     return false
   }
 }
+
+export async function logout() {
+  await api.post('/auth/logout')
+}

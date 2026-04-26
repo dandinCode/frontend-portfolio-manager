@@ -1,35 +1,16 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
-import { login as loginService, createUser } from '@/services/user'
-import { isTokenExpired } from '@/utils/jwt'
+import { ref } from 'vue'
+import { login as loginService, createUser, logout as logoutService } from '@/services/user'
 
 export const useUserStore = defineStore('user', () => {
-  const token = ref<string | null>(localStorage.getItem('token'))
   const loading = ref(false)
-  const currentToken = token.value
-
-  if (currentToken && isTokenExpired(currentToken)) {
-    token.value = null
-    localStorage.removeItem('token')
-  }
-
-  const isAuthenticated = computed(() => !!token.value)
-
-  function setToken(value: string | null) {
-    token.value = value
-
-    if (value) {
-      localStorage.setItem('token', value)
-    } else {
-      localStorage.removeItem('token')
-    }
-  }
+  const isAuthenticated = ref(false)
 
   async function login(email: string, password: string) {
     loading.value = true
-
     try {
       await loginService(email, password)
+      isAuthenticated.value = true
     } finally {
       loading.value = false
     }
@@ -45,13 +26,12 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
-  function logout() {
-    setToken(null)
-    localStorage.removeItem('token')
+  async function logout() {
+    await logoutService()
+    isAuthenticated.value = false
   }
 
   return {
-    token,
     loading,
     isAuthenticated,
     login,
