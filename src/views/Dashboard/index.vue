@@ -211,12 +211,14 @@ import { computed } from "vue"
 import { useRouter } from "vue-router"
 import { usePortfoliosStore } from "@/stores/portfoliosStore"
 import { getUserFirstName } from "@/utils/user"
+import { useUserStore } from "@/stores/userStore"
 
 const router = useRouter()
 const store = usePortfoliosStore()
+const userStore = useUserStore();
 
 const portfolios = computed(() => store.portfolios)
-const firstName = getUserFirstName()
+const firstName = getUserFirstName(userStore.user)
 
 const recentPortfolios = computed(() => {
     store.loadFromSession()
