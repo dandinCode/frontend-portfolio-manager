@@ -113,15 +113,6 @@
                         <p>Nenhuma ação encontrada</p>
                     </div>
                 </div>
-
-                <!-- Botão "Ver mais" se houver muitas ações -->
-                <div v-if="hasMoreStocks" class="show-more">
-                    <v-btn variant="text" color="#B99D75" @click="showAllStocks = !showAllStocks">
-                        {{ showAllStocks ? 'Ver menos' : `Ver mais ${stocksToShow.length - displayedStocks.length}
-                        ações` }}
-                        <v-icon end size="16">{{ showAllStocks ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-                    </v-btn>
-                </div>
             </div>
         </v-expand-transition>
     </div>
@@ -143,9 +134,6 @@ const showAllStocks = ref(false);
 // Filtros
 const selectedSectors = ref<string[]>([]);
 const selectedStatuses = ref<string[]>([]);
-
-// Limite para mostrar "Ver mais"
-const INITIAL_DISPLAY_LIMIT = 12;
 
 onMounted(() => {
     if (stocks.symbols.length === 0) {
@@ -180,18 +168,6 @@ const filteredStocksByFilters = computed(() => {
 
     return filtered;
 });
-
-// Ações para exibir (com limite)
-const stocksToShow = computed(() => filteredStocksByFilters.value);
-
-const displayedStocks = computed(() => {
-    if (showAllStocks.value) {
-        return stocksToShow.value;
-    }
-    return stocksToShow.value.slice(0, INITIAL_DISPLAY_LIMIT);
-});
-
-const hasMoreStocks = computed(() => stocksToShow.value.length > INITIAL_DISPLAY_LIMIT);
 
 // Funções de filtro
 function toggleSectorFilter(sector: string) {
