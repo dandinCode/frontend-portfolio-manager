@@ -218,7 +218,7 @@ const store = usePortfoliosStore()
 const userStore = useUserStore();
 
 const portfolios = computed(() => store.portfolios)
-const firstName = getUserFirstName(userStore.user)
+const firstName = computed(() => getUserFirstName(userStore.user))
 
 const recentPortfolios = computed(() => {
     store.loadFromSession()
