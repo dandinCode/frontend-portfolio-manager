@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
 import { getUserInitials, decodeUTF8 } from '@/utils/user'
 import { notify } from '@/utils/toast'
 import { updateUser } from '@/services/user'
@@ -8,17 +9,29 @@ import { useUserStore } from '@/stores/userStore'
 
 const router = useRouter()
 const userStore = useUserStore()
+const { user } = storeToRefs(userStore)
 
-const user = userStore.user
-const name = ref(decodeUTF8(user?.name || ''))
-const email = ref(user?.email || '')
-const initials = getUserInitials(user)
+const name = ref('')
 const loading = ref(false)
 
-const memberSince = computed(() => {
-  if (!user?.createdAt) return '-'
+watch(
+  user,
+  (u) => {
+    if (u && typeof u === 'object') {
+      name.value = decodeUTF8(u.name || '')
+    }
+  },
+  { immediate: true, deep: true },
+)
 
-  return new Date(user.createdAt).toLocaleDateString('pt-BR', {
+const email = computed(() => (user.value && typeof user.value === 'object' ? user.value.email || '' : ''))
+const initials = computed(() => getUserInitials(user.value && typeof user.value === 'object' ? user.value : {}))
+
+const memberSince = computed(() => {
+  const u = user.value
+  if (!u || typeof u !== 'object' || !u.createdAt) return '-'
+
+  return new Date(u.createdAt).toLocaleDateString('pt-BR', {
     day: '2-digit',
     month: 'long',
     year: 'numeric'
@@ -38,7 +51,7 @@ async function handleSave() {
       name: name.value
     })
     notify.success('Perfil atualizado com sucesso')
-    userStore.loadUser()
+    await  userStore.loadUser()
   } catch (e: any) {
     notify.error(
       e?.response?.data?.message || 'Erro ao atualizar perfil'
@@ -103,7 +116,7 @@ function goBack() {
                 <v-icon size="16" color="#B99D75" class="mr-1">mdi-email-outline</v-icon>
                 Email
               </label>
-              <v-text-field v-model="email" variant="outlined" readonly disabled class="custom-input readonly-field"
+              <v-text-field :model-value="email" variant="outlined" readonly disabled class="custom-input readonly-field"
                 bg-color="rgba(0,0,0,0.15)">
                 <template #append-inner>
                   <v-chip size="x-small" color="#B99D75" variant="tonal" class="readonly-chip">
