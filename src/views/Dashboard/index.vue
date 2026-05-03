@@ -18,8 +18,8 @@
                 </v-btn>
             </div>
 
-            <v-row class="mt-6">
-                <v-col cols="12" md="3" v-for="(metric, index) in metrics" :key="index">
+            <v-row class="mt-6 metrics-row" align="stretch" dense>
+                <v-col cols="12" sm="6" md="3" class="metric-col" v-for="(metric, index) in metrics" :key="index">
                     <v-card class="metric-card glow-card" @click="metric.action ? router.push(metric.action) : null">
                         <div class="metric-icon" :style="{ background: metric.bgColor }">
                             <v-icon :color="metric.iconColor">{{ metric.icon }}</v-icon>
@@ -379,6 +379,9 @@ function formatDate(date: string) {
     padding: 40px 20px;
     position: relative;
     z-index: 1;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 .glass-panel {
@@ -441,17 +444,34 @@ function formatDate(date: string) {
     box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
 }
 
+.metrics-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.metric-col {
+    display: flex;
+}
+
 .metric-card {
+    flex: 1;
+    width: 100%;
+    min-height: 140px;
     padding: 24px !important;
     background: rgba(10, 8, 3, 0.8) !important;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 215, 0, 0.1);
     border-radius: 20px !important;
     display: flex;
-    align-items: center;
-    gap: 16px;
+    align-items: flex-start;
+    gap: 14px;
     transition: all 0.3s ease;
     cursor: pointer;
+    overflow: visible;
+}
+
+.metric-card.glow-card {
+    overflow: visible;
 }
 
 .glow-card {
@@ -483,9 +503,12 @@ function formatDate(date: string) {
 }
 
 .metric-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    min-height: 52px;
+    flex-shrink: 0;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -493,13 +516,23 @@ function formatDate(date: string) {
 
 .metric-content {
     flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .metric-title {
+    display: block;
     color: #b0a580;
-    font-size: 13px;
+    font-size: 11px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .metric-value-wrapper {
@@ -507,6 +540,7 @@ function formatDate(date: string) {
     align-items: center;
     gap: 8px;
     margin: 4px 0;
+    min-height: 36px;
 }
 
 .metric-value {
@@ -799,7 +833,7 @@ function formatDate(date: string) {
     background: rgba(255, 215, 0, 0.1) !important;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1000px) {
     .header {
         flex-direction: column;
         gap: 20px;
