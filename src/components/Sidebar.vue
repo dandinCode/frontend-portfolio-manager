@@ -1,6 +1,6 @@
 <template>
     <v-navigation-drawer v-model="drawer" :rail="collapsed" permanent class="talos-sidebar">
-        <div class="logo" :class="{ 'logo-rail': collapsed }">
+        <div class="logo" :class="{ 'logo-rail': collapsed }" role="button" tabindex="0" @click="goDashboard" @keydown.enter.prevent="goDashboard">
             <div class="logo-icon">
                 <v-img :src="logo" width="32" height="32" />
             </div>
@@ -104,6 +104,10 @@ const menu = [
     }
 ]
 
+function goDashboard() {
+    router.push('/Dashboard')
+}
+
 function goProfile() {
     router.push('/ProfileView')
 }
@@ -126,6 +130,11 @@ async function logout() {
     gap: 12px;
     padding: 24px 18px;
     transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.logo:hover {
+    opacity: 0.92;
 }
 
 .logo-rail {
