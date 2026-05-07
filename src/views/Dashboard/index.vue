@@ -7,7 +7,7 @@
                         <v-icon size="18" color="#ffd700" class="mr-1">mdi-hand-wave</v-icon>
                         <span>Olá, {{ firstName }}</span>
                     </div>
-                    <h1 class="title gradient-text">Bem-vindo de volta</h1>
+                    <h1 class="title bem-vindo-text">Bem-vindo de volta</h1>
                     <p class="subtitle">Acompanhe seus investimentos e desempenho em tempo real</p>
                 </div>
                 <v-btn class="create-btn" @click="router.push('/PortfolioList')">
@@ -417,8 +417,8 @@ function formatDate(date: string) {
     margin-bottom: 8px;
 }
 
-.gradient-text {
-    background: linear-gradient(135deg, #ffd700, #b8860b);
+.bem-vindo-text {
+    background: #ffd700;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
