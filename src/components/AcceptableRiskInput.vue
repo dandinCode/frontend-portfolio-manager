@@ -1,11 +1,26 @@
 <template>
     <v-row class="text-white mt-4">
         <v-col cols="12" md="6">
-            <v-tooltip text="Opcional: se deixar vazio, o modelo irá usar a média dos riscos (desvio padrão)">
+            <v-tooltip
+                :text="RISK_HINT"
+                :disabled="showInlineHint"
+                :open-on-focus="false"
+            >
                 <template #activator="{ props }">
-                    <v-text-field v-bind="props" v-model="formatted" label="Risco aceitável (%)" variant="outlined"
-                        color="blue-accent-2" type="text" @input="validate" :error="hasError"
-                        :error-messages="errorMessage" clearable />
+                    <v-text-field
+                        v-bind="props"
+                        v-model="formatted"
+                        label="Risco aceitável (%)"
+                        variant="outlined"
+                        color="blue-accent-2"
+                        type="text"
+                        @input="validate"
+                        :error="hasError"
+                        :error-messages="errorMessage"
+                        clearable
+                        :hint="showInlineHint ? RISK_HINT : undefined"
+                        :persistent-hint="showInlineHint"
+                    />
                 </template>
             </v-tooltip>
         </v-col>
@@ -13,8 +28,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
+import { useDisplay } from "vuetify";
 import { useAnalysisStore } from "@/stores/analysisStore";
+
+const RISK_HINT =
+    "Opcional: se deixar vazio, o modelo irá usar a média dos riscos (desvio padrão)";
+
+const display = useDisplay();
+const showInlineHint = computed(() => display.smAndDown.value);
 
 const analysis = useAnalysisStore();
 
