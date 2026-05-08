@@ -4,7 +4,7 @@
             <div class="header glass-panel">
                 <div>
                     <h1 class="title">
-                        <span class="gradient-text">Meus Portfólios</span>
+                        <span class="my-portfolios-text">Meus Portfólios</span>
                     </h1>
                     <p class="subtitle">Gerencie suas carteiras de investimento com inteligência</p>
                 </div>
@@ -267,8 +267,8 @@ onMounted(loadPortfolios)
     margin-bottom: 8px;
 }
 
-.gradient-text {
-    background: linear-gradient(135deg, #6c63ff, #4c8df6);
+.my-portfolios-text {
+    background: #6c63ff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
