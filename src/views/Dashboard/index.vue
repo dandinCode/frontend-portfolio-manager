@@ -430,7 +430,7 @@ function formatDate(date: string) {
 }
 
 .create-btn {
-    background: linear-gradient(135deg, #ffd700, #b8860b) !important;
+    background: #ffd700 !important;
     color: #050400 !important;
     font-weight: 600;
     text-transform: none;
