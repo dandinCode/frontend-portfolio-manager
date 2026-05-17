@@ -165,7 +165,7 @@ function goBack() {
 <style scoped>
 .profile-bg {
   min-height: 100vh;
-  background: radial-gradient(circle at 50% 0%, #2a2418 0%, #1a1a1a 100%);
+  background: radial-gradient(circle at top, #1C2D41 0%, #0f1a24 100%);
   padding: 40px 20px;
 }
 
@@ -192,12 +192,12 @@ function goBack() {
 }
 
 .profile-card {
-  background: rgba(26, 26, 26, 0.85) !important;
+  background: rgba(28, 45, 65, 0.85) !important;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(185, 157, 117, 0.25);
+  border: 1px solid rgba(185, 157, 117, 0.2);
   border-radius: 28px !important;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
 
 .card-header {
@@ -271,7 +271,7 @@ function goBack() {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid #1a1a1a;
+  border: 3px solid #0f1a24;
 }
 
 .form-fields {
