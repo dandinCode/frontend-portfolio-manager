@@ -116,7 +116,25 @@
                     </p>
                 </div>
 
-                <ModelResult v-if="modelResult" :optimization="modelResult.optimization" />
+                <v-alert
+                    v-if="runError"
+                    type="error"
+                    variant="tonal"
+                    class="result-error mx-8 mb-4"
+                    rounded="lg"
+                    closable
+                    @click:close="runError = null"
+                >
+                    {{ runError }}
+                </v-alert>
+
+                <div
+                    v-if="modelResult?.optimization"
+                    ref="resultsRef"
+                    class="results-section"
+                >
+                    <ModelResult :optimization="modelResult.optimization" />
+                </div>
             </v-sheet>
         </v-container>
     </div>
@@ -130,9 +148,11 @@ import { useAnalysisStore } from "@/stores/analysisStore";
 import { analyzeStocks } from "@/services/analisys";
 import ModelResult from "@/components/ModelResult.vue";
 import { notify } from "@/utils/toast";
-import { ref } from 'vue';
+import { ref, nextTick } from 'vue';
 
 const modelResult = ref<any | null>(null);
+const runError = ref<string | null>(null);
+const resultsRef = ref<HTMLElement | null>(null);
 const analysis = useAnalysisStore();
 const loading = ref(false)
 
@@ -141,6 +161,9 @@ async function runModel() {
         notify.error('Selecione pelo menos 5 ações para uma otimização eficiente.');
         return;
     }
+
+    modelResult.value = null;
+    runError.value = null;
 
     const payload: any = {
         stocks: analysis.selectedSymbols
@@ -165,11 +188,15 @@ async function runModel() {
         const result = await analyzeStocks(payload as any);
 
         if (result.error || !result.optimization) {
-            notify.error(result.error ?? 'Falha ao otimizar a carteira.');
+            const message = result.error ?? 'Falha ao otimizar a carteira.';
+            runError.value = message;
+            notify.error(message);
             return;
         }
         modelResult.value = result;
         notify.success('Modelo executado com sucesso!');
+        await nextTick();
+        resultsRef.value?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (err) {
         console.error(err);
         notify.error('Erro ao executar modelo.');
@@ -190,7 +217,15 @@ async function runModel() {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(185, 157, 117, 0.2);
     border-radius: 28px !important;
-    overflow: hidden;
+    overflow: visible;
+}
+
+.results-section {
+    padding: 0 16px 32px;
+}
+
+.result-error {
+    border: 1px solid rgba(239, 68, 68, 0.35) !important;
 }
 
 .sheet-header {
