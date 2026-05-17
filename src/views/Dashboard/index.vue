@@ -4,7 +4,7 @@
             <div class="header glass-panel">
                 <div>
                     <div class="welcome-badge">
-                        <v-icon size="18" color="#ffd700" class="mr-1">mdi-hand-wave</v-icon>
+                        <v-icon size="18" color="#B99D75" class="mr-1">mdi-hand-wave</v-icon>
                         <span>Olá, {{ firstName }}</span>
                     </div>
                     <h1 class="title bem-vindo-text">Bem-vindo de volta</h1>
@@ -46,7 +46,7 @@
                                 Evolução dos seus portfólios nos últimos 30 dias
                             </template>
                             <template #append>
-                                <v-chip size="small" color="#ffd700" variant="tonal">
+                                <v-chip size="small" color="#B99D75" variant="tonal">
                                     <v-icon start size="14">mdi-calendar</v-icon>
                                     Últimos 30 dias
                                 </v-chip>
@@ -55,7 +55,7 @@
                         <v-card-text>
                             <div class="chart-placeholder">
                                 <div class="placeholder-content">
-                                    <v-icon size="48" color="#b0a580">mdi-chart-line</v-icon>
+                                    <v-icon size="48" color="rgba(255,252,239,0.5)">mdi-chart-line</v-icon>
                                     <p>Gráfico de performance será carregado aqui</p>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                 <v-col cols="12">
                     <div class="section-header">
                         <h2 class="section-title">Últimos Portfólios</h2>
-                        <v-btn variant="text" color="#ffd700" @click="router.push('/PortfolioList')">
+                        <v-btn variant="text" color="#B99D75" @click="router.push('/PortfolioList')">
                             Ver todos
                             <v-icon end size="16">mdi-arrow-right</v-icon>
                         </v-btn>
@@ -127,7 +127,7 @@
                     <v-card class="portfolio-card glow-card" @click="openPortfolio(portfolio.id)">
                         <div class="portfolio-header">
                             <div class="portfolio-icon">
-                                <v-icon color="#ffd700">mdi-briefcase-variant</v-icon>
+                                <v-icon color="#B99D75">mdi-briefcase-variant</v-icon>
                             </div>
                             <v-menu location="bottom end">
                                 <template #activator="{ props }">
@@ -154,7 +154,7 @@
 
                         <h3 class="portfolio-name">{{ portfolio.name }}</h3>
                         <p class="portfolio-date">
-                            <v-icon size="12" color="#b0a580" class="mr-1">mdi-calendar</v-icon>
+                            <v-icon size="12" color="rgba(255,252,239,0.5)" class="mr-1">mdi-calendar</v-icon>
                             Criado em {{ formatDate(portfolio.createdAt) }}
                         </p>
 
@@ -176,10 +176,10 @@
 
                         <div class="portfolio-footer">
                             <span class="asset-count">
-                                <v-icon size="12" color="#b0a580" class="mr-1">mdi-puzzle</v-icon>
+                                <v-icon size="12" color="rgba(255,252,239,0.5)" class="mr-1">mdi-puzzle</v-icon>
                                 {{ portfolio.portfolioStocks?.length || 0 }} ativos
                             </span>
-                            <v-chip size="x-small" color="#ffd700" variant="tonal">
+                            <v-chip size="x-small" color="#B99D75" variant="tonal">
                                 Ativo
                             </v-chip>
                         </div>
@@ -188,10 +188,10 @@
 
                 <v-col cols="12" md="4" v-if="!recentPortfolios.length">
                     <v-card class="empty-card glow-card" @click="router.push('/RunModel')">
-                        <v-icon size="48" color="#b0a580">mdi-briefcase-plus</v-icon>
+                        <v-icon size="48" color="rgba(255,252,239,0.5)">mdi-briefcase-plus</v-icon>
                         <h3>Criar Primeiro Portfólio</h3>
                         <p>Comece a otimizar seus investimentos agora</p>
-                        <v-btn color="#ffd700" variant="tonal" class="mt-2">
+                        <v-btn color="#B99D75" variant="tonal" class="mt-2">
                             Criar Portfólio
                         </v-btn>
                     </v-card>
@@ -263,8 +263,8 @@ const metrics = computed(() => [
         value: portfolios.value.length,
         subtitle: 'carteiras criadas',
         icon: 'mdi-briefcase',
-        bgColor: 'rgba(255, 215, 0, 0.1)',
-        iconColor: '#ffd700',
+        bgColor: 'rgba(185, 157, 117, 0.12)',
+        iconColor: '#B99D75',
         valueClass: ''
     },
     {
@@ -302,8 +302,8 @@ const quickActions = [
         title: 'Analisar Ações',
         description: 'Use o modelo de otimização para criar carteiras',
         icon: 'mdi-chart-line',
-        bgColor: 'rgba(255, 215, 0, 0.1)',
-        iconColor: '#ffd700',
+        bgColor: 'rgba(185, 157, 117, 0.12)',
+        iconColor: '#B99D75',
         route: '/RunModel'
     },
     {
@@ -360,7 +360,7 @@ function formatDate(date: string) {
 <style scoped>
 .dashboard-bg {
     min-height: 100vh;
-    background: radial-gradient(circle at top, #291f01, #050400);
+    background: radial-gradient(circle at top, #1C2D41 0%, #0f1a24 100%);
     position: relative;
     overflow: hidden;
 }
@@ -370,7 +370,7 @@ function formatDate(date: string) {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(rgba(255, 215, 0, 0.03) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(185, 157, 117, 0.04) 1px, transparent 1px);
     background-size: 50px 50px;
     pointer-events: none;
 }
@@ -385,10 +385,10 @@ function formatDate(date: string) {
 }
 
 .glass-panel {
-    background: rgba(10, 8, 3, 0.7) !important;
+    background: rgba(28, 45, 65, 0.85) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(185, 157, 117, 0.2);
     border-radius: 24px !important;
     padding: 24px 32px;
 }
@@ -403,11 +403,11 @@ function formatDate(date: string) {
 .welcome-badge {
     display: inline-flex;
     align-items: center;
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(185, 157, 117, 0.12);
     padding: 4px 12px;
     border-radius: 20px;
     margin-bottom: 12px;
-    color: #ffd700;
+    color: #B99D75;
     font-size: 13px;
 }
 
@@ -418,30 +418,30 @@ function formatDate(date: string) {
 }
 
 .bem-vindo-text {
-    background: #ffd700;
+    background: #b99d75;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .subtitle {
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.65);
     font-size: 16px;
 }
 
 .create-btn {
-    background: #ffd700 !important;
-    color: #050400 !important;
+    background: #b99d75;
+    color: #1c2d41 !important;
     font-weight: 600;
     text-transform: none;
-    border-radius: 14px !important;
+    border-radius: 40px !important;
     padding: 12px 24px !important;
     transition: all 0.3s ease;
 }
 
 .create-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(185, 157, 117, 0.3);
 }
 
 .metrics-row {
@@ -458,9 +458,9 @@ function formatDate(date: string) {
     width: 100%;
     min-height: 140px;
     padding: 24px !important;
-    background: rgba(10, 8, 3, 0.8) !important;
+    background: rgba(0, 0, 0, 0.25) !important;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(185, 157, 117, 0.12);
     border-radius: 20px !important;
     display: flex;
     align-items: flex-start;
@@ -486,7 +486,7 @@ function formatDate(date: string) {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, #ffd700, #b8860b, #ffd700);
+    background: linear-gradient(45deg, #b99d75, #9b835f, #b99d75);
     border-radius: 22px;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -499,7 +499,7 @@ function formatDate(date: string) {
 
 .metric-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 215, 0, 0.3);
+    border-color: rgba(185, 157, 117, 0.35);
 }
 
 .metric-icon {
@@ -524,7 +524,7 @@ function formatDate(date: string) {
 
 .metric-title {
     display: block;
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.55);
     font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
@@ -546,11 +546,11 @@ function formatDate(date: string) {
 .metric-value {
     font-size: 28px;
     font-weight: 700;
-    color: white;
+    color: #fffcef;
 }
 
 .metric-subtitle {
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.55);
     font-size: 11px;
 }
 
@@ -568,15 +568,15 @@ function formatDate(date: string) {
 }
 
 .chart-card {
-    background: rgba(10, 8, 3, 0.8) !important;
+    background: rgba(0, 0, 0, 0.25) !important;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(185, 157, 117, 0.12);
     border-radius: 24px !important;
     height: 100%;
 }
 
 .card-title {
-    color: #ffd700;
+    color: #b99d75;
     font-size: 18px;
     font-weight: 600;
 }
@@ -589,14 +589,14 @@ function formatDate(date: string) {
 }
 
 .placeholder-content p {
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.55);
     margin-top: 12px;
 }
 
 .sector-card {
-    background: rgba(10, 8, 3, 0.8) !important;
+    background: rgba(0, 0, 0, 0.25) !important;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(185, 157, 117, 0.12);
     border-radius: 24px !important;
     height: 100%;
 }
@@ -626,7 +626,7 @@ function formatDate(date: string) {
 }
 
 .sector-name {
-    color: white;
+    color: #fffcef;
     font-size: 14px;
 }
 
@@ -637,21 +637,21 @@ function formatDate(date: string) {
 }
 
 .sector-value {
-    color: #ffd700;
+    color: #b99d75;
     font-weight: 600;
     font-size: 14px;
 }
 
 .sector-count {
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.55);
     font-size: 12px;
 }
 
 .action-card {
     padding: 32px !important;
-    background: rgba(10, 8, 3, 0.8) !important;
+    background: rgba(0, 0, 0, 0.25) !important;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(185, 157, 117, 0.12);
     border-radius: 24px !important;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -660,7 +660,7 @@ function formatDate(date: string) {
 
 .action-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(255, 215, 0, 0.3);
+    border-color: rgba(185, 157, 117, 0.35);
 }
 
 .action-icon {
@@ -674,14 +674,14 @@ function formatDate(date: string) {
 }
 
 .action-title {
-    color: white;
+    color: #fffcef;
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 8px;
 }
 
 .action-description {
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.55);
     font-size: 14px;
     margin-bottom: 16px;
 }
@@ -699,16 +699,16 @@ function formatDate(date: string) {
 }
 
 .section-title {
-    color: #ffd700;
+    color: #b99d75;
     font-size: 24px;
     font-weight: 600;
 }
 
 .portfolio-card {
     padding: 24px !important;
-    background: rgba(10, 8, 3, 0.8) !important;
+    background: rgba(0, 0, 0, 0.25) !important;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(185, 157, 117, 0.12);
     border-radius: 24px !important;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -716,7 +716,7 @@ function formatDate(date: string) {
 
 .portfolio-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 215, 0, 0.3);
+    border-color: rgba(185, 157, 117, 0.35);
 }
 
 .portfolio-header {
@@ -729,7 +729,7 @@ function formatDate(date: string) {
 .portfolio-icon {
     width: 48px;
     height: 48px;
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(185, 157, 117, 0.12);
     border-radius: 14px;
     display: flex;
     align-items: center;
@@ -737,14 +737,14 @@ function formatDate(date: string) {
 }
 
 .portfolio-name {
-    color: white;
+    color: #fffcef;
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 6px;
 }
 
 .portfolio-date {
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.55);
     font-size: 12px;
     margin-bottom: 16px;
     display: flex;
@@ -763,7 +763,7 @@ function formatDate(date: string) {
 }
 
 .metric-label {
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.55);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -779,11 +779,11 @@ function formatDate(date: string) {
     justify-content: space-between;
     align-items: center;
     padding-top: 12px;
-    border-top: 1px solid rgba(255, 215, 0, 0.1);
+    border-top: 1px solid rgba(185, 157, 117, 0.12);
 }
 
 .asset-count {
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.55);
     font-size: 12px;
     display: flex;
     align-items: center;
@@ -791,9 +791,9 @@ function formatDate(date: string) {
 
 .empty-card {
     padding: 40px !important;
-    background: rgba(10, 8, 3, 0.8) !important;
+    background: rgba(0, 0, 0, 0.25) !important;
     backdrop-filter: blur(10px);
-    border: 2px dashed rgba(255, 215, 0, 0.2);
+    border: 2px dashed rgba(185, 157, 117, 0.25);
     border-radius: 24px !important;
     text-align: center;
     cursor: pointer;
@@ -807,30 +807,30 @@ function formatDate(date: string) {
 }
 
 .empty-card:hover {
-    border-color: rgba(255, 215, 0, 0.5);
-    background: rgba(20, 16, 6, 0.9) !important;
+    border-color: rgba(185, 157, 117, 0.45);
+    background: rgba(28, 45, 65, 0.9) !important;
 }
 
 .empty-card h3 {
-    color: white;
+    color: #fffcef;
     font-size: 20px;
 }
 
 .empty-card p {
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.55);
 }
 
 .action-menu {
-    background: #1a1508 !important;
-    border: 1px solid rgba(255, 215, 0, 0.1);
+    background: #1c2d41 !important;
+    border: 1px solid rgba(185, 157, 117, 0.2);
 }
 
 .action-menu :deep(.v-list-item) {
-    color: white;
+    color: #fffcef;
 }
 
 .action-menu :deep(.v-list-item:hover) {
-    background: rgba(255, 215, 0, 0.1) !important;
+    background: rgba(185, 157, 117, 0.12) !important;
 }
 
 @media (max-width: 1000px) {
