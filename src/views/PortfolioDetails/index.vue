@@ -5,7 +5,7 @@
                 <div class="header glass-panel">
                     <div>
                         <div class="back-nav">
-                            <v-btn variant="text" color="amber-lighten-2" size="small" class="back-btn"
+                            <v-btn variant="text" color="#B99D75" size="small" class="back-btn"
                                 @click="router.back()">
                                 <v-icon start size="16">mdi-arrow-left</v-icon>
                                 Voltar
@@ -13,7 +13,7 @@
                         </div>
                         <h1 class="title">{{ portfolio.name }}</h1>
                         <p class="subtitle">
-                            <v-icon size="14" class="mr-1" color="amber-lighten-2">mdi-calendar</v-icon>
+                            <v-icon size="14" class="mr-1" color="#B99D75">mdi-calendar</v-icon>
                             Criado em {{ formatDate(portfolio.createdAt) }}
                         </p>
                     </div>
@@ -62,10 +62,10 @@
                 </v-row>
                 <v-card class="stocks-card glow-card">
                     <v-card-title class="d-flex align-center">
-                        <v-icon start color="amber-lighten-2" class="mr-2">mdi-format-list-bulleted</v-icon>
+                        <v-icon start color="#B99D75" class="mr-2">mdi-format-list-bulleted</v-icon>
                         Ativos do Portfólio
                     </v-card-title>
-                    <v-divider class="mx-4" :style="{ borderColor: 'rgba(255, 215, 0, 0.1)' }" />
+                    <v-divider class="mx-4 section-divider" />
                     <v-table class="stocks-table">
                         <thead>
                             <tr>
@@ -82,7 +82,7 @@
                             <tr v-for="item in portfolio.portfolioStocks" :key="item.id" class="stock-row">
                                 <td>
                                     <div class="stock-symbol">
-                                        <v-avatar size="32" color="amber-darken-4" variant="tonal" class="mr-2">
+                                        <v-avatar size="32" class="symbol-avatar mr-2" variant="tonal">
                                             <span class="symbol-text">{{ item.stock.symbol.symbol.substring(0, 2)
                                                 }}</span>
                                         </v-avatar>
@@ -129,7 +129,7 @@
                 </v-card>
             </div>
             <div v-else-if="!portfolio" class="loading-state">
-                <v-progress-circular indeterminate size="60" color="amber-lighten-2" />
+                <v-progress-circular indeterminate size="60" color="#B99D75" />
                 <p class="text-grey mt-4">Carregando portfólio...</p>
             </div>
             <v-alert v-else type="error" variant="tonal" class="error-alert">
@@ -186,7 +186,7 @@ function getVolatilityClass(volatility: number) {
 <style scoped>
 .run-model-bg {
     min-height: 100vh;
-    background: radial-gradient(circle at top, #291f01, #050400);
+    background: radial-gradient(circle at top, #1C2D41 0%, #0f1a24 100%);
 }
 
 .portfolio-page {
@@ -196,10 +196,10 @@ function getVolatilityClass(volatility: number) {
 }
 
 .glass-panel {
-    background: rgba(10, 8, 3, 0.7) !important;
+    background: rgba(28, 45, 65, 0.85) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(185, 157, 117, 0.2);
     border-radius: 24px !important;
     padding: 24px 32px;
     margin-bottom: 40px;
@@ -213,23 +213,27 @@ function getVolatilityClass(volatility: number) {
     text-transform: none;
     letter-spacing: normal;
     padding: 4px 12px !important;
-    border-radius: 20px !important;
+    border-radius: 40px !important;
+    color: #fffcef !important;
 }
 
 .back-btn:hover {
-    background: rgba(255, 215, 0, 0.1) !important;
+    background: rgba(185, 157, 117, 0.12) !important;
+    color: #b99d75 !important;
 }
 
 .title {
     font-size: 34px;
     font-weight: 700;
-    color: #ffd700;
     margin-bottom: 8px;
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    background: #fffcef;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .subtitle {
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.65);
     display: flex;
     align-items: center;
     font-size: 14px;
@@ -241,9 +245,9 @@ function getVolatilityClass(volatility: number) {
 
 .metric-card {
     padding: 24px !important;
-    background: rgba(10, 8, 3, 0.8) !important;
+    background: rgba(0, 0, 0, 0.25) !important;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(185, 157, 117, 0.12);
     border-radius: 20px !important;
     display: flex;
     align-items: center;
@@ -263,7 +267,7 @@ function getVolatilityClass(volatility: number) {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(45deg, #ffd700, #b8860b, #ffd700);
+    background: linear-gradient(45deg, #b99d75, #9b835f, #b99d75);
     border-radius: 22px;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -276,8 +280,8 @@ function getVolatilityClass(volatility: number) {
 
 .metric-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(255, 215, 0, 0.3);
-    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+    border-color: rgba(185, 157, 117, 0.35);
+    box-shadow: 0 10px 30px rgba(185, 157, 117, 0.12);
 }
 
 .metric-icon {
@@ -311,7 +315,7 @@ function getVolatilityClass(volatility: number) {
 }
 
 .metric-label {
-    color: #b0a580;
+    color: rgba(255, 252, 239, 0.55);
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -320,7 +324,7 @@ function getVolatilityClass(volatility: number) {
 .metric-value {
     font-size: 32px;
     font-weight: 700;
-    color: white;
+    color: #fffcef;
 }
 
 .positive {
@@ -336,22 +340,30 @@ function getVolatilityClass(volatility: number) {
 }
 
 .stocks-card {
-    background: rgba(10, 8, 3, 0.8) !important;
+    background: rgba(0, 0, 0, 0.25) !important;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.1);
-    border-radius: 24px !important;
+    border: 1px solid rgba(185, 157, 117, 0.12);
+    border-radius: 20px !important;
     overflow: hidden;
 }
 
+.section-divider {
+    border-color: rgba(185, 157, 117, 0.12) !important;
+}
+
+.symbol-avatar {
+    background: rgba(185, 157, 117, 0.15) !important;
+}
+
 .stocks-card :deep(.v-card-title) {
-    color: #ffd700;
+    color: #b99d75;
     font-weight: 600;
     padding: 20px 24px;
 }
 
 .stocks-table {
     background: transparent !important;
-    color: white;
+    color: #fffcef;
 }
 
 .stocks-table :deep(.v-table__wrapper) {
@@ -359,18 +371,19 @@ function getVolatilityClass(volatility: number) {
 }
 
 .stocks-table :deep(th) {
-    color: #b0a580 !important;
+    color: #b99d75 !important;
+    background: rgba(185, 157, 117, 0.06) !important;
     font-size: 12px !important;
     font-weight: 600 !important;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.1) !important;
+    border-bottom: 1px solid rgba(185, 157, 117, 0.12) !important;
     padding: 16px !important;
 }
 
 .stocks-table :deep(td) {
-    color: white !important;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.05) !important;
+    color: rgba(255, 252, 239, 0.9) !important;
+    border-bottom: 1px solid rgba(185, 157, 117, 0.08) !important;
     padding: 16px !important;
 }
 
@@ -379,7 +392,7 @@ function getVolatilityClass(volatility: number) {
 }
 
 .stock-row:hover {
-    background: rgba(255, 215, 0, 0.05) !important;
+    background: rgba(185, 157, 117, 0.06) !important;
 }
 
 .stock-symbol {
@@ -390,7 +403,7 @@ function getVolatilityClass(volatility: number) {
 .symbol-text {
     font-weight: 600;
     font-size: 12px;
-    color: #ffd700;
+    color: #1c2d41;
 }
 
 .yield-cell .yield-value {
@@ -411,7 +424,7 @@ function getVolatilityClass(volatility: number) {
 }
 
 .text-grey {
-    color: #b0a580 !important;
+    color: rgba(255, 252, 239, 0.5) !important;
 }
 
 .loading-state {
