@@ -4,7 +4,7 @@
             <div class="header-icon">
                 <v-icon size="28" color="#B99D75">mdi-chart-arc</v-icon>
             </div>
-            <div class="header-text">
+            <div >
                 <h2 class="result-title">Resultado da Otimização</h2>
                 <p class="result-subtitle">Carteira sugerida com base no modelo de programação linear</p>
             </div>
@@ -201,7 +201,7 @@ async function handleSave(name: string) {
     font-size: 1.35rem;
     font-weight: 700;
     margin: 0 0 4px;
-    background: linear-gradient(135deg, #fffcef 0%, #b99d75 70%, #8b7355 100%);
+    background: #b99d75;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
